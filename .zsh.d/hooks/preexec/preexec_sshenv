@@ -1,0 +1,19 @@
+preexec_sshenv()
+{
+    # if [[ -n $TMUX ]]; then
+    #     # Running tmux
+    #     # TMUX_SOCK=$(print $TMUX | cut -d , -f 1)
+    #     # NEW_SSH_AUTH_SOCK=$( \
+    #     #     tmux -S $TMUX_SOCK showenv | \
+    #     #     grep ^SSH_AUTH_SOCK | \
+    #     #     cut -d = -f 2)
+        
+    #     # if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
+    #     #     SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
+    #     # fi
+    # elif [[ -n $STY ]]; then
+    if tty_detachable; then
+        # Running GNU Screen
+        sshenv_refresh
+    fi
+}

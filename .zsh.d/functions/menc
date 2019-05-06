@@ -1,0 +1,14 @@
+menc()
+{
+    local in_file
+    local out_file
+    for in_file in $*; do
+        out_file=${in_file:r}.avi
+
+        mencoder $in_file -o $out_file -of lavf \
+            -oac mp3lame -lameopts abr:br=128 -srate 44100 -ovc lavc \
+            -lavcopts vcodec=mpeg4:vbitrate=1400
+
+#            -lavcopts vcodec=flv:vbitrate=512:mbd=2:mv0:trell:v4mv:cbp:last_pred=3
+    done
+}

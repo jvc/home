@@ -1,0 +1,10 @@
+rpmextract()
+{
+   local fname
+   local newdir
+
+   for fname in $@; do
+      newdir=${fname%.rpm}
+      mkdir $newdir && (cd $newdir && rpm2cpio ../$fname | cpio -uidv)
+   done
+}

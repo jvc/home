@@ -1,0 +1,4 @@
+notitle()
+{
+    export ZNOTITLE=1
+}

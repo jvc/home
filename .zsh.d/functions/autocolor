@@ -1,0 +1,24 @@
+autocolor()
+{
+    local flname
+    local code
+
+    for flname in $*; do
+        if [[ -f $flname ]]; then
+            code="$code(normalize-file \"$flname\")"
+        fi
+    done
+
+<<EOF | gimp -i -b -
+(define (normalize-file filename)
+  (let* ((image (car (gimp-file-load RUN-NONINTERACTIVE filename filename)))
+         (drawable (car (gimp-image-get-active-layer image))))
+    (plug-in-normalize RUN-NONINTERACTIVE image drawable)
+    (gimp-file-save RUN-NONINTERACTIVE image drawable filename filename)
+    (gimp-image-delete image)))
+
+$code
+
+(gimp-quit 0)
+EOF
+}

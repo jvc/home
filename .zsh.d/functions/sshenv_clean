@@ -1,0 +1,32 @@
+# Remove the current environment files and old expired ones.
+sshenv_clean()
+{
+    if [[ -z $SSH_AUTH_SOCK ]] || [[ ! -L $SSH_AUTH_SOCK ]]; then
+        return 0
+    fi
+
+    if [[ ! -S $SSH_AUTH_SOCK ]]; then
+        print "$0: warning: bad SSH_AUTH_SOCK"
+    fi
+
+    local authsym rcfile
+
+    # search oldest first to purge out old envs
+    for authsym in $HOME/.sshenv.*(@Om); do
+        rcfile=$authsym.rc
+
+        # clean up old, invalid links
+        if [[ ! -S $authsym ]]; then
+            rm -f $authsym $rcfile
+        fi
+
+        # optimization - only remove up to our current env. we can
+        # clean up others next time. rm needs to be run again since
+        # the sym is likely valid and we only removed invalid ones.
+        if [[ $SSH_AUTH_SOCK == $authsym ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}

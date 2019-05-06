@@ -1,0 +1,5 @@
+base=$MAIL
+maildir=.:.*
+mfolder=Search
+database=$HOME/.mairix_db
+

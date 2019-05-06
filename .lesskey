@@ -1,0 +1,8 @@
+#command
+\en     forw-scroll
+\ep     back-scroll
+
+#line-edit
+      delete
+\\177   delete
+^H      backspace

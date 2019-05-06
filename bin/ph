@@ -1,0 +1,202 @@
+#!/bin/zsh
+#
+# Project Home - Treat your home directory like it's a project. Share
+# your environment across your shell accounts.
+# 
+# I store projects as:
+#     ~/src/PROJECT[-BRANCH]/
+#
+# When I am main-lining, -BRANCH is ommited. So I set PH_REPO to
+# ~/src/home - since it is essentially a collection of files that are
+# are in my home directory.
+#
+# jvc@jvic.net
+#
+export PH_REPO=${PH_REPO:-$HOME/src/home}
+
+[[ -d $PH_REPO ]] || {
+    print "You must set PH_REPO to your repository location. $PH_REPO does not exist."
+    return 1
+}
+
+usage()
+{
+    cat <<EOF
+ Usage: $0 OPERATION [OPTIONS...]
+
+    add FILE [FILE...]
+       Move a file to the repository and sym link it.
+
+    deploy [USER@]HOST::DEST
+       rsync the repo to another machine (do not use this if the
+       machine has access to the hub repo)
+
+    diff
+       Perform a diff against the repository.
+
+    install
+       Create all symlinks from $PH_REPO to $HOME. Run this once, or
+       if symlinks break for some reason.
+
+    mv SOURCE DEST
+       Move a file that already exists in the repo to another location.
+
+    rm FILE [FILE...]
+       Remove a file and symlinks.
+
+    sync
+       Push local changes to hub, Update local repository and all symlinks that
+       have changed.
+
+
+EOF
+    exit 1
+}
+
+ph_add()
+{
+    local file
+    local relative_dir
+    local file_tail
+    local repo_dir
+    for file in $*; do
+        file_tail=${file:t}
+        repo_dir="$PH_REPO/"
+        if [[ ${file:h} != "." ]]; then
+            relative_dir="${file:h}/"
+            repo_dir="$PH_REPO/$relative_dir"
+            mkdir -p $repo_dir
+        fi
+        mv $file $repo_dir
+        ( cd $PH_REPO ; git add $relative_dir$file_tail )
+        ln -vfs $repo_dir$file_tail $HOME/$file
+    done
+}
+
+ph_rm()
+{
+    local file
+    local relative_dir
+    local file_tail
+    for file in $*; do
+        file_tail=${file:t}
+        if [[ ${file:h} != "." ]]; then
+            relative_dir="${file:h}/"
+        fi
+        ( cd $PH_REPO ; git rm $relative_dir$file_tail )
+        rm -f $HOME/$file
+    done
+}
+
+ph_mv()
+{
+    local src=$1
+    local dst=$2
+    [[ -z $src || -z $dst ]] && usage
+    local src_tail=${src:t}
+    local dst_tail=${dst:t}
+    local src_relative_dir
+    local dst_relative_dir
+    if [[ ${src:h} != "." ]]; then
+        src_relative_dir="${src:h}/"
+    fi
+    if [[ ${dst:h} != "." ]]; then
+        dst_relative_dir="${dst:h}/"
+        dst_repo_dir=$PH_REPO/$dst_relative_dir
+        mkdir -p $dst_repo_dir
+    fi
+    
+    ( cd $PH_REPO ; git mv $src_relative_dir$src_tail $dst_relative_dir$dst_tail )
+
+    # update symlinks
+    rm -vf $HOME/$src
+    ln -vs $dst_repo_dir$dst_tail $HOME/$dst
+}
+
+
+ph_diff()
+{
+    ( cd $PH_REPO ; git diff )
+}
+
+ph_install()
+{
+    local file
+    local die
+    setopt localoptions globdots extendedglob
+    pushd $PH_REPO
+
+    # Symlink every file to home dir
+    for file in (^.git/)#*(.); do
+        # determine target directory of file
+        dir=${file:h}
+
+        # Make directory when it doesn't exist
+        mkdir -p $HOME/$dir
+        ln -vfs $PWD/$file $HOME/$file
+    done
+    popd
+}
+
+auto_sym()
+{
+    local op file
+    while read op file
+    do
+        case $op in
+            (A)
+                dir=${file:h}
+                [[ $dir != "." ]] && mkdir -vp $HOME/$dir
+                ln -vfs $PWD/$file $HOME/$file
+            ;;
+            (D)
+                rm -vf $HOME/$file
+            ;;
+        esac
+    done
+}
+
+ph_simple_clean()
+{
+    # TODO: traverse directories in the repository, then for each
+    # corresponding directory in the home dir, remove all symlinks
+    # inside it that have a broken symlink with path prefix matching 
+}
+
+ph_pull()
+{
+    local dir
+    local msg
+    local diff_cmd
+
+    [[ $# -gt 0 ]] && msg="-m $*"
+
+    diff_cmd='git diff --name-status --no-color --diff-filter=ARD --relative'
+    pushd $PH_REPO
+
+    # fetch the origin
+    git fetch || return
+
+    # diff to find new, renamed, and modified files in the origin
+    ${(z)diff_cmd} HEAD...origin | auto_sym
+
+    # Merge our changes
+    git merge origin
+
+    # diff to find new, renamed, and modified files in the local repo
+    # (these will already be symlinked if added to the repo with ph)
+    ${(z)diff_cmd} origin...HEAD | auto_sym
+
+    popd
+}
+
+ph_deploy()
+{
+    if [[ $# -eq 1 ]] || usage
+
+    rsync -vrC --exclude=.git $PH_REPO/ $1
+}
+
+command=$1
+whence ph_$command >/dev/null || usage
+ph_$command $*[2,-1]

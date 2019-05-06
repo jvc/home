@@ -1,0 +1,98 @@
+#!/bin/sh
+
+#DISPLAY=${DISPLAY:-":0.0"}
+#XAUTHORITY=${XAUTHORITY:-"/home/$USER/.Xauthority"}
+PATH="/bin:/usr/local/sbin:/usr/local/bin:/sbin:/usr/sbin:/usr/bin"
+GCONFTOOL=/usr/bin/gconftool-2
+
+touchpad()
+{
+#synclient VertTwoFingerScroll=1
+#synclient HorizTwoFingerScroll=1
+VertEdgeScroll=1
+#synclient HorizEdgeScroll=0
+
+# synclient FingerLow=40
+# synclient FingerHigh=80
+
+# synclientTopEdge=50
+synclient TapButton1=1
+synclient TapButton2=2
+synclient TapButton3=3
+synclient ClickFinger1=1
+synclient ClickFinger2=2
+synclient ClickFinger3=3
+
+#synclient MinSpeed=0.6
+#synclient MaxSpeed=0.9
+}
+
+mousekeyson()
+{
+   echo "Running mousekeys for $HOST"
+   xkbset accessx
+   # $GCONFTOOL --type bool --set /desktop/gnome/accessibility/keyboard/mousekeys_enable true
+   # $GCONFTOOL --type bool --set /desktop/gnome/accessibility/keyboard/timeout_enable false
+   # $GCONFTOOL --type bool --set /desktop/gnome/accessibility/keyboard/stickykeys_enable false
+   xkbset m
+   xkbset exp "=m"
+}
+
+if lsusb | grep EzKEY >/dev/null; then
+   echo "Using Safetype Keyboard"
+   xmodmap  ~/.xmodmap/kinesis_default.xmodmap
+
+   xmodmap -e 'clear lock'
+   xmodmap -e 'add Control = Caps_Lock'
+
+   mousekeyson
+   xmodmap -e 'keysym F2 = Pointer_Button1'
+   xmodmap -e 'keysym F3 = Pointer_Button2'
+   xmodmap -e 'keysym F4 = Pointer_Button3'
+elif lsusb | grep "PI Engineering, Inc. Kinesis Advantage" >/dev/null; then
+    echo "Using Kinesis Advantage Keyboard"
+    xmodmap  ~/.xmodmap/kinesis_default.xmodmap
+
+    xmodmap -e 'clear lock'
+    xmodmap -e 'add Control = Caps_Lock'
+
+    mousekeyson
+    xmodmap -e 'keysym F6 = Pointer_Button1'
+    xmodmap -e 'keysym F7 = Pointer_Button2'
+    xmodmap -e 'keysym F8 = Pointer_Button3'
+
+    xmodmap -e 'keysym F9 = Pointer_Button1'
+    xmodmap -e 'keysym F10 = Pointer_Button2'
+    xmodmap -e 'keysym F11 = Pointer_Button3'
+else
+    #
+    # No per keyboard rules, check per host
+    #
+    if [ "x$HOST" = "xlfod" ]; then
+        echo "Using MAC Keyboard"
+        xmodmap ~/.xmodmap/macbook_pro_as_pc-base.xmodmap
+
+        # clear mods
+        xmodmap -e "clear mod4" # unmap old Super keys
+        xmodmap -e "clear mod1" # unmap old Alt/Meta keys
+        xmodmap -e "clear control"
+        xmodmap -e 'clear lock'
+
+        #
+        # Set keys
+        #
+
+        # LHS is ctrl, alt/option, command - ctrl stays the same
+        xmodmap -e "keycode 64 = Meta_L Meta_L" # alt/option should be meta_l
+        xmodmap -e "keycode 133 = BackSpace BackSpace" # command to backspace
+        # RHS is command, alt/option, command stays Super_R
+        xmodmap -e "keycode 108 = Control_R Control_R" # map right alt/option to Ctrl
+        # Set mods
+        xmodmap -e "add mod4 = Super_R"
+        xmodmap -e "add mod1 = Meta_L"
+        xmodmap -e "add control = Control_L Control_R Caps_Lock"
+
+        touchpad
+    fi
+fi
+

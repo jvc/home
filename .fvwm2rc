@@ -1,0 +1,877 @@
+# .fvwm2rc - fvwm2 startup file
+#
+#
+
+ModulePath       /usr/lib/fvwm/2.5.14:/usr/lib/fvwm/2.4.6:/usr/lib/fvwm/2.5.8:/usr/lib/fvwm/2.5.10:/usr/lib/fvwm/2.5.11:/usr/lib/fvwm/2.5.12:/usr/lib/fvwm/2.5.13
+ImagePath        /usr/local/share/icons:/usr/share/icons:/usr/share/pixmaps:/usr/include/X11/bitmaps:/usr/X11R6/include/bitmaps:/usr/X11R6/include/X11/pixmaps:/usr/X11R6/lib/X11/fvwm2/pixmaps:/export/home/jchouinard/pixmaps:/home/jchouinard/pixmaps:/usr/local/share/icons:/usr/share/icons:/usr/X11R6/include/X11/pixmaps:/usr/X11R6/lib/X11/fvwm2/pixmaps:/usr/share/fvwm95/mini-icons:/usr/share/fvwm95/icons:/home/jchouinard/pixmaps
+ClickTime        150
+ColormapFocus    FollowsMouse
+DeskTopSize      5x1
+EdgeResistance   100000 100
+EdgeScroll       100 100
+HilightColor     White SteelBlue
+
+#
+# Fonts
+#
+WindowFont       "xft:lucida:Bold:size=10"
+#WindowFont       -*-lucida-bold-r-normal-*-10-*
+#IconFont         -*-helvetica-medium-r-normal-*-11-*-*-*-*-*-*-*
+
+#
+# Button Style - 1 3 5 7 9    0 8 6 4 2
+#
+# Horizontal line - made by me
+# ButtonStyle 1 Default
+# #ButtonStyle 1 5 25x40@1 25x60@1 75x60@0 75x40@0 25x40@1
+# #ButtonStyle 1 ActiveDown 5 25x40@0 25x60@0 75x60@1 75x40@1 25x40@0
+# # dot
+# ButtonStyle 3 5 45x45@1 55x45@1 55x55@0 45x55@0 45x45@1
+# #ButtonStyle 3 ActiveDown 5 45x45@0 55x45@0 55x55@1 45x55@1 45x45@0
+# # windows shrinking
+# ButtonStyle 6 16 60x40@1 60x80@0 15x80@0 15x40@1 60x40@1 40x40@1 40x25@1 75x25@1 75x60@0 60x60@0 75x60@0 75x40@0 85x40@0 85x15@0 60x15@1 60x25@1
+#ButtonStyle 4 ActiveDown 16 60x40@0 60x80@1 15x80@1 15x40@0 60x40@0 40x40@0 40x25@0 75x25@0 75x60@1 60x60@1 75x60@1 75x40@1 85x40@1 85x15@1 60x15@0 60x25@0
+# # Big square
+# ButtonStyle 4 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1
+# #ButtonStyle 4 ActiveDown 5 25x25@0 25x75@0 75x75@1 75x25@1 25x25@0
+# # Badass X
+# ButtonStyle 2 16 20x20@1 30x20@1 50x40@1 70x20@1 80x20@1 80x30@0 60x50@0 80x80@0 70x80@0 50x60@0 30x80@0 20x80@0 20x70@0 40x50@1 20x30@0 20x20@1
+# 5 20x20@1
+# #ButonStyle 2 ActiveDown 16 20x20@0 30x20@0 50x40@0 70x20@0 80x20@0 80x30@1 60x50@1 80x80@1 70x80@1 50x60@1 30x80@1 20x80@1 20x70@1 40x50@0 20x30@1 20x20@0
+
+ButtonStyle Reset
+#ButtonStyle 3 5 25x45@1 75x45@1 75x55@1 25x55@0 25x45@1
+ButtonStyle 3 16 20x20@1 30x20@1 50x40@1 70x20@1 80x20@1 80x30@0 60x50@0 80x70@0 80x80@0 70x80@0 50x60@0 30x80@0 20x80@0 20x70@0 40x50@1 20x30@1
+ButtonStyle 6 Vector 4 50x75@1 25x25@1 75x25@1 50x75@0
+ButtonStyle 4 Vector 5 25x75@0 75x75@0 75x25@0 25x25@1 25x75@1
+ButtonStyle 2 17 20x20@1 30x20@1 50x40@1 70x20@1 80x20@1 80x30@0 60x50@0 80x70@1 80x80@0 70x80@0 50x60@0 30x80@0 20x80@0 20x70@0 40x50@1 20x30@0 20x20@1
+
+ButtonStyle All -- UseTitleStyle
+
+#
+# Menu Style
+#
+MenuStyle "*" mwm, Foreground #979b9b, Background #555d5d, Greyed Black, \
+  Font "xft:lucida:Bold:size=10", HilightBack SteelBlue3, ActiveFore White, Hilight3DThin
+
+
+#
+# Title Style
+#
+# TitleStyle Centered Height 18
+TitleStyle Height 15
+TitleStyle Inactive HGradient 128 Gray35 Gray40
+TitleStyle ActiveUp HGradient 128 SteelBlue4 SteelBlue
+TitleStyle ActiveDown HGradient 128 SteelBlue SteelBlue4
+
+#
+# Styles
+#
+#Style "*" IconBox screen w 10 5 -130 700, IconGrid 64 10, IconFill left top
+Style "*" NoIcon
+Style "*" SlipperyIcon, IconTitle
+
+Style "*" Color #979b9b/#555d5d
+Style "*" BorderWidth 3, HandleWidth 3
+Style "*" MWMBorder, MWMDecor, MWMFunctions
+Style "*" DecorateTransient
+# l t r b
+#Style "*" IconBox +48 -64 -128 -0, IconGrid 8 8, IconFill b l,  \
+#          IconBox -64 +64 -0 -128, IconGrid 8 8, IconFill b r
+Style "*" SloppyFocus
+Style "*" CascadePlacement
+#Style "*" WindowShadeShrinks
+
+# Fvwm modules
+Style "Fvwm*"       NoTitle, WindowListSkip, CirculateSkip
+#Style "FvwmPager"   Sticky, NoHandles, BorderWidth 2
+Style "FvwmIdent"   Title, WindowListHit, CirculateHit
+#Style "Gaim"        SmartPlacement, StartsOnPage 1, SkipMapping
+Style "emacs"       ManualPlacement
+Style "Xterm"       ManualPlacement
+Style "rxvt"        ManualPlacement
+Style "aterm"       ManualPlacement
+Style "xbatt"       Sticky, WindowListSkip, ClickToFocus, NoTitle, BorderWidth 0, NoHandles
+Style "XDaliClock"  Sticky, WindowListSkip, ClickToFocus, NoTitle, BorderWidth 2, NoHandles
+Style "Windows"     NoTitle, BorderWidth 0, NoHandles
+
+#Style "*"           Icon default.xbm
+
+#
+# Key bindings
+#
+Key Tab   A    M    Next [CurrentPage] FocusAndRaise
+Key Tab   A    MS   Prev [CurrentPage] FocusAndRaise
+Key F4    W    M    Close
+Key F5    W    A    RefreshWindow
+Key Down  TW   M    Lower
+Key Up    TW   M    Raise
+
+# press arrow + control & meta anywhere, and scroll by 1 page
+Key Left    A   CM   Scroll -100 +0
+Key Right   A   CM   Scroll +100 +0
+Key Up      A   CM   Scroll +0   -100
+Key Down    A   CM   Scroll +0   +100
+
+# press arrow + control, meta, and shift and scroll by 1 page
+Key Left    W   CMS  MoveAndSwitchLeft
+Key Right   W   CMS  MoveAndSwitchRight
+#Key Left    W   M  MoveLeft
+#Key Right   W   M  MoveRight
+#Key Up      A   CMS  Scroll +0   -100
+#Key Down    A   CMS  Scroll +0   +100
+
+
+#
+# Mouse bindings - Contexts:
+#                - R for the root
+#                - W for an application window
+#                - T for a window title bar
+#                - S for a window side, top, or bottom bar
+#                - F for a window frame (the corners)
+#                - I for an Icon window
+#                - [0-9] for title-bar buttons
+#
+Mouse 1 R     A  Menu RootMenu
+Mouse 2 R     A  WindowList
+Mouse 3 R     A  WindowList
+#Mouse 1 3     A  WindowShade
+Mouse 1 6     A  Iconify
+Mouse 1 4     A  Maximize
+Mouse 1 2     A  Close
+Mouse 1 1     A  Menu Window Close
+Mouse 1 W     M  RaiseLower
+Mouse 1 T     A  Move-or-Maximize
+Mouse 2 S     A  Move
+Mouse 1 I     A  Move-or-Iconify
+Mouse 2 I     A  Iconify
+Mouse 3 I     A  Module FvwmIdent
+Mouse 1 FS    A  Resize-or-Raise
+Mouse 2 TF    A  WindowShade
+Mouse 3 TSF   A  Menu Window Close
+#Mouse 3 R     A  Exec rxvt
+
+AddToFunc InitFunction
++  "I" Module FvwmButtons FvwmButtons-XX
+
+AddToFunc RestartFunction
++  "I" Module FvwmButtons FvwmButtons-XX
+
+#
+# Menus
+#
+DestroyMenu "Modules"
+AddToMenu "Modules" "Modules" Title
++ "&FvwmAnimate" Module FvwmAnimate
++ "Fvw&mAnimate menu"  Popup MenuFvwmAnimate
++ "Fvwm&Auto" Module FvwmAuto 300 raise lower
++ "Fvwm&Backer" Module FvwmBacker
++ "FvwmBa&nner" Module FvwmBanner
++ "FvwmB&uttons" Module FvwmButtons
++ "FvwmButtons (&Debian)" Module FvwmButtons DebianFvwmButtons
++ "Fvwm&CommandS" Module FvwmCommandS
++ "FvwmC&onsole" Module FvwmConsole
++ "FvwmConsoleC.&pl" Module FvwmConsole -e $FVWM_MODULEDIR/FvwmConsoleC.pl
++ "FvwmDebug" Module FvwmDebug
++ "Fvwm&Event" Module FvwmEvent
++ "Fvwm&IconBox" Module FvwmIconBox
++ "FvwmIconMan" Module FvwmIconMan
++ "FvwmIdent" Module FvwmIdent
++ "FvwmPa&ger" Module FvwmPager 0 0
++ "Fvwm&Rearrange (cascade)" Module FvwmRearrange -cascade
++ "FvwmRearrange (&horiz)" Module FvwmRearrange -tile -h
++ "F&vwmRearrange (vert)" Module FvwmRearrange -tile
++ "Fvwm&Save" Module FvwmSave
++ "FvwmSaveDesk" Module FvwmSaveDesk
++ "FvwmScroll" Module FvwmScroll
++ "Fvwm&Talk" Module FvwmTalk
++ "FvwmTas&kBar" Module FvwmTaskBar
++ "Fvwm&Wharf" Module FvwmWharf
++ "FvwmWin&List" Module FvwmWinList
+
+
+AddToMenu Window "Window" Title
++ "Identify"  Module FvwmIdent
++ "Refresh" RefreshWindow
++ ""  Nop
++ "Move"  Move
++ "Resize"  Resize
++ "Raise"  Raise
++ "Lower"  Lower
++ ""  Nop
++ "Iconify"  Iconify
++ "Stick"  Stick
++ "Maximize"  Maximize
++ ""  Nop
++ "Delete"  Delete
++ "Close"  Close
++ "Destroy"  Destroy
+
+DestroyMenu "Screen/Lock/Assorted"
+AddToMenu "Screen/Lock/Assorted" "Assorted" Title Top
++ "&Ball" Exec exec xlock -remote -nice 19 -mode ball
++ "B&lot" Exec exec xlock -remote -nice 19 -mode blot
++ "B&ounce" Exec exec xlock -remote -nice 19 -mode bounce
++ "B&ubble" Exec exec xlock -remote -nice 19 -mode bubble
++ "&Clock" Exec exec xlock -remote -nice 19 -mode clock
++ "Crystal" Exec exec xlock -remote -nice 19 -mode crystal
++ "&Daisy" Exec exec xlock -remote -nice 19 -mode daisy
++ "Dcloc&k" Exec exec xlock -remote -nice 19 -mode dclock
++ "Decay" Exec exec xlock -remote -nice 19 -mode decay
++ "Deco" Exec exec xlock -remote -nice 19 -mode deco
++ "&Eyes" Exec exec xlock -remote -nice 19 -mode eyes +trackmouse
++ "E&yesptr" Exec exec xlock -remote -nice 19 -mode eyes -trackmouse
++ "&Goop" Exec exec xlock -remote -nice 19 -mode goop
++ "&Marquee" Exec exec xlock -remote -nice 19 -mode marquee
++ "M&atrix" Exec exec xlock -remote -nice 19 -mode matrix
++ "Munc&h" Exec exec xlock -remote -nice 19 -mode munch
++ "&Nose" Exec exec xlock -remote -nice 19 -mode nose
++ "&Pacman" Exec exec xlock -remote -nice 19 -mode pacman
++ "Pyro" Exec exec xlock -remote -nice 19 -mode pyro +use3d
++ "Pyro&3d" Exec exec xlock -remote -nice 19 -mode pyro -use3d
++ "&Roll" Exec exec xlock -remote -nice 19 -mode roll
++ "&Slip" Exec exec xlock -remote -nice 19 -mode slip
++ "Star&fish" Exec exec xlock -remote -nice 19 -mode starfish -install
++ "Swarm" Exec exec xlock -remote -nice 19 -mode swarm +trackmouse
++ "Swarmptr" Exec exec xlock -remote -nice 19 -mode swarm -trackmouse
++ "Sw&irl" Exec exec xlock -remote -nice 19 -mode swirl -install
++ "&Tetris" Exec exec xlock -remote -nice 19 -mode tetris
++ "Tube" Exec exec xlock -remote -nice 19 -mode tube -install
++ "&Worm" Exec exec xlock -remote -nice 19 -mode worm +use3d
++ "Worm3d" Exec exec xlock -remote -nice 19 -mode worm -use3d
++ "&Xjack" Exec exec xlock -remote -nice 19 -mode xjack
+
+DestroyMenu "Screen/Lock/Automata"
+AddToMenu "Screen/Lock/Automata" "Automata" Title Top
++ "&Ant" Exec exec xlock -remote -nice 19 -mode ant -neighbors 4 +truchet
++ "Ant &Truchet" Exec exec xlock -remote -nice 19 -mode ant -neighbors 4 -truchet
++ "&Bee" Exec exec xlock -remote -nice 19 -mode ant -neighbors 6 +truchet
++ "B&ee Truchet" Exec exec xlock -remote -nice 19 -mode ant -neighbors 6 -truchet
++ "B&ug" Exec exec xlock -remote -nice 19 -mode bug
++ "&Demon" Exec exec xlock -remote -nice 19 -mode demon
++ "D&ilemma" Exec exec xlock -remote -nice 19 -mode dilemma
++ "&Life" Exec exec xlock -remote -nice 19 -mode life
++ "Life &Callahan" Exec exec xlock -remote -nice 19 -mode life -callahan -size 7
++ "Li&fe1d" Exec exec xlock -remote -nice 19 -mode life1d
++ "Life&3d" Exec exec xlock -remote -nice 19 -mode life3d
++ "L&oop" Exec exec xlock -remote -nice 19 -mode loop
++ "&Random" Exec exec xlock -remote -nice 19 -mode random -modelist allautomata -fullrandom -neighbors 0
++ "&Voters" Exec exec xlock -remote -nice 19 -mode voters
++ "&Wator" Exec exec xlock -remote -nice 19 -mode wator
++ "Wire" Exec exec xlock -remote -nice 19 -mode wire
+
+DestroyMenu "Screen/Lock/Fractal"
+AddToMenu "Screen/Lock/Fractal" "Fractal" Title Top
++ "&Coral" Exec exec xlock -remote -nice 19 -mode coral
++ "&Discrete" Exec exec xlock -remote -nice 19 -mode discrete
++ "Drift" Exec exec xlock -remote -nice 19 -mode drift -fullrandom
++ "&Flame" Exec exec xlock -remote -nice 19 -mode flame
++ "Flo&w" Exec exec xlock -remote -nice 19 -mode flow
++ "F&orest" Exec exec xlock -remote -nice 19 -mode forest
++ "&Hop" Exec exec xlock -remote -nice 19 -mode hop -fullrandom
++ "&IFS" Exec exec xlock -remote -nice 19 -mode ifs
++ "&Julia" Exec exec xlock -remote -nice 19 -mode julia +trackmouse
++ "J&uliaptr" Exec exec xlock -remote -nice 19 -mode julia -trackmouse
++ "&Kumppa" Exec exec xlock -remote -nice 19 -mode kumppa
++ "&Lightning" Exec exec xlock -remote -nice 19 -mode lightning
++ "L&yapunov" Exec exec xlock -remote -nice 19 -mode lyapunov -install
++ "&Mandelbrot" Exec exec xlock -remote -nice 19 -mode mandelbrot -install
++ "Mou&ntain" Exec exec xlock -remote -nice 19 -mode mountain
++ "&Random" Exec exec xlock -remote -nice 19 -mode random -modelist allfractal -fullrandom
++ "&Sierpinski" Exec exec xlock -remote -nice 19 -mode sierpinski 
++ "Str&ange" Exec exec xlock -remote -nice 19 -mode strange 
++ "&Thornbird" Exec exec xlock -remote -nice 19 -mode thornbird
++ "Trian&gle" Exec exec xlock -remote -nice 19 -mode triangle
++ "Turtl&e" Exec exec xlock -remote -nice 19 -mode turtle
++ "&Vines" Exec exec xlock -remote -nice 19 -mode vines
+
+DestroyMenu "Screen/Lock/Geometry"
+AddToMenu "Screen/Lock/Geometry" "Geometry" Title Top
++ "&Braid" Exec exec xlock -remote -nice 19 -mode braid
++ "&Fadeplot" Exec exec xlock -remote -nice 19 -mode fadeplot
++ "&Helix" Exec exec xlock -remote -nice 19 -mode helix -fullrandom
++ "H&yper" Exec exec xlock -remote -nice 19 -mode hyper
++ "&Ico" Exec exec xlock -remote -nice 19 -mode ico
++ "&Kaleid" Exec exec xlock -remote -nice 19 -mode kaleid
++ "&Laser" Exec exec xlock -remote -nice 19 -mode laser
++ "Lisa" Exec exec xlock -remote -nice 19 -mode lisa
++ "Lissie" Exec exec xlock -remote -nice 19 -mode lissie
++ "&Penrose" Exec exec xlock -remote -nice 19 -mode penrose +ammann
++ "Penrose &Ammann" Exec exec xlock -remote -nice 19 -mode penrose -ammann
++ "P&etal" Exec exec xlock -remote -nice 19 -mode petal
++ "&Qix" Exec exec xlock -remote -nice 19 -mode qix +complete
++ "Qix &complete" Exec exec xlock -remote -nice 19 -mode qix -complete
++ "&Random" Exec exec xlock -remote -nice 19 -mode random -modelist allgeometry -fullrandom
++ "R&otor" Exec exec xlock -remote -nice 19 -mode rotor
++ "&Shape" Exec exec xlock -remote -nice 19 -mode shape
++ "Sphere" Exec exec xlock -remote -nice 19 -mode sphere
++ "Spiral" Exec exec xlock -remote -nice 19 -mode spiral
++ "Spli&ne" Exec exec xlock -remote -nice 19 -mode spline
++ "&Tik_Tak" Exec exec xlock -remote -nice 19 -mode tik_tak
+
+DestroyMenu "Screen/Lock/MarqueeMessage"
+AddToMenu "Screen/Lock/MarqueeMessage" "MarqueeMessage" Title Top
++ "&Back Soon" Exec exec xlock -remote -nice 19 -mode marquee -message "$LOGNAME will be back soon."
++ "&Overnight" Exec exec xlock -remote -nice 19 -mode marquee -message "$LOGNAME will be back in the morning."
++ "&Rude" Exec exec xlock -remote -nice 19 -mode marquee -message "$LOGNAME not here, please go away!"
+
+DestroyMenu "Screen/Lock/NoseMessage"
+AddToMenu "Screen/Lock/NoseMessage" "NoseMessage" Title Top
++ "&Back Soon" Exec exec xlock -remote -nice 19 -mode nose -message "$LOGNAME will be back soon."
++ "&Overnight" Exec exec xlock -remote -nice 19 -mode nose -message "$LOGNAME will be back in the morning."
++ "&Rude" Exec exec xlock -remote -nice 19 -mode nose -message "$LOGNAME not here, please go away!"
+
+DestroyMenu "Screen/Lock/Space"
+AddToMenu "Screen/Lock/Space" "Space" Title Top
++ "&Bouboule" Exec exec xlock -remote -nice 19 -mode bouboule +use3d
++ "B&ouboule3d" Exec exec xlock -remote -nice 19 -mode bouboule -use3d
++ "&Galaxy" Exec exec xlock -remote -nice 19 -mode galaxy
++ "Gr&av" Exec exec xlock -remote -nice 19 -mode grav +trail +decay
++ "Grav &Decay" Exec exec xlock -remote -nice 19 -mode grav -decay
++ "Grav &Trail" Exec exec xlock -remote -nice 19 -mode grav -trail
++ "&Random Space" Exec exec xlock -remote -nice 19 -mode random -modelist allspace
++ "Ro&ck" Exec exec xlock -remote -nice 19 -mode star -rock
++ "&Star" Exec exec xlock -remote -nice 19 -mode star +rock +use3d +trek 0
++ "Star Tr&ek" Exec exec xlock -remote -nice 19 -mode star -trek 100
++ "Star&3d" Exec exec xlock -remote -nice 19 -mode star -use3d
++ "&World" Exec exec xlock -remote -nice 19 -mode world
+
+DestroyMenu "Screen/Lock/Special"
+AddToMenu "Screen/Lock/Special" "Special" Title Top
++ "&Blank" Exec exec xlock -remote -nice 19 -mode blank
++ "B&omb" Exec exec xlock -remote -nice 19 -mode bomb
++ "&Random 3d" Exec exec xlock -remote -nice 19 -mode random -modelist all3d -use3d -fullrandom
++ "R&andom all" Exec exec xlock -remote -nice 19 -mode random -modelist all -fullrandom -neighbors 0
++ "Ra&ndom nice" Exec exec xlock -remote -nice 19 -mode random -modelist allnice -fullrandom -neighbors 0
++ "Random &ptr" Exec exec xlock -remote -nice 19 -mode random -modelist allmouse -trackmouse -fullrandom
++ "Random &standard" Exec exec xlock -remote -nice 19 -mode random -modelist all-allgl -fullrandom -neighbors 0
++ "Random &write" Exec exec xlock -remote -nice 19 -mode random -modelist allwrite -install -fullrandom
+
+DestroyMenu "Screen/Lock/XPM"
+AddToMenu "Screen/Lock/XPM" "XPM" Title Top
++ "&Bat" Exec exec xlock -remote -nice 19 -mode bat
++ "&Flag" Exec exec xlock -remote -nice 19 -mode flag
++ "&Image" Exec exec xlock -remote -nice 19 -mode image
++ "&Life" Exec exec xlock -remote -nice 19 -mode life
++ "Lif&e1d" Exec exec xlock -remote -nice 19 -mode life1d
++ "&Maze" Exec exec xlock -remote -nice 19 -mode maze
++ "&Puzzle" Exec exec xlock -remote -nice 19 -mode puzzle
++ "&Random" Exec exec xlock -remote -nice 19 -mode random -modelist allxpm -fullrandom
+
+DestroyMenu "Screen/Lock/XjackMessage"
+AddToMenu "Screen/Lock/XjackMessage" "XjackMessage" Title Top
++ "&Crazy Boy" Exec exec xlock -remote -nice 19 -mode xjack -message "All work and no play makes $LOGNAME a dull boy."
++ "Crazy &Girl" Exec exec xlock -remote -nice 19 -mode xjack -message "All work and no play makes $LOGNAME a dull girl."
+
+DestroyMenu "Screen/Lock"
+AddToMenu "Screen/Lock" "Lock" Title Top
++ "&Assorted" Popup Screen/Lock/Assorted
++ "A&utomata" Popup Screen/Lock/Automata
++ "&Fractal" Popup Screen/Lock/Fractal
++ "&Geometry" Popup Screen/Lock/Geometry
++ "&MarqueeMessage" Popup Screen/Lock/MarqueeMessage
++ "&NoseMessage" Popup Screen/Lock/NoseMessage
++ "&Space" Popup Screen/Lock/Space
++ "S&pecial" Popup Screen/Lock/Special
++ "&XPM" Popup Screen/Lock/XPM
++ "X&jackMessage" Popup Screen/Lock/XjackMessage
+
+DestroyMenu "Screen/Save/Assorted"
+AddToMenu "Screen/Save/Assorted" "Assorted" Title Top
++ "&Ball" Exec exec xlock -remote -nice 19 -nolock -mode ball
++ "B&lot" Exec exec xlock -remote -nice 19 -nolock -mode blot
++ "B&ounce" Exec exec xlock -remote -nice 19 -nolock -mode bounce
++ "B&ubble" Exec exec xlock -remote -nice 19 -nolock -mode bubble
++ "&Clock" Exec exec xlock -remote -nice 19 -nolock -mode clock
++ "Crystal" Exec exec xlock -remote -nice 19 -nolock -mode crystal
++ "&Daisy" Exec exec xlock -remote -nice 19 -nolock -mode daisy
++ "Dcloc&k" Exec exec xlock -remote -nice 19 -nolock -mode dclock
++ "Decay" Exec exec xlock -remote -nice 19 -nolock -mode decay
++ "Deco" Exec exec xlock -remote -nice 19 -nolock -mode deco
++ "&Eyes" Exec exec xlock -remote -nice 19 -nolock -mode eyes +trackmouse
++ "E&yesptr" Exec exec xlock -remote -nice 19 -nolock -mode eyes -trackmouse
++ "&Goop" Exec exec xlock -remote -nice 19 -nolock -mode goop
++ "&Marquee" Exec exec xlock -remote -nice 19 -nolock -mode marquee
++ "M&atrix" Exec exec xlock -remote -nice 19 -nolock -mode matrix
++ "Munc&h" Exec exec xlock -remote -nice 19 -nolock -mode munch
++ "&Nose" Exec exec xlock -remote -nice 19 -nolock -mode nose
++ "&Pacman" Exec exec xlock -remote -nice 19 -nolock -mode pacman
++ "Pyro" Exec exec xlock -remote -nice 19 -nolock -mode pyro +use3d
++ "Pyro&3d" Exec exec xlock -remote -nice 19 -nolock -mode pyro -use3d
++ "&Roll" Exec exec xlock -remote -nice 19 -nolock -mode roll
++ "&Slip" Exec exec xlock -remote -nice 19 -nolock -mode slip
++ "Star&fish" Exec exec xlock -remote -nice 19 -nolock -mode starfish -install
++ "Swarm" Exec exec xlock -remote -nice 19 -nolock -mode swarm +trackmouse
++ "Swarmptr" Exec exec xlock -remote -nice 19 -nolock -mode swarm -trackmouse
++ "Sw&irl" Exec exec xlock -remote -nice 19 -nolock -mode swirl -install
++ "&Tetris" Exec exec xlock -remote -nice 19 -nolock -mode tetris
++ "Tube" Exec exec xlock -remote -nice 19 -nolock -mode tube -install
++ "&Worm" Exec exec xlock -remote -nice 19 -nolock -mode worm +use3d
++ "Worm3d" Exec exec xlock -remote -nice 19 -nolock -mode worm -use3d
++ "&Xjack" Exec exec xlock -remote -nice 19 -nolock -mode xjack
+
+DestroyMenu "Screen/Save/Automata"
+AddToMenu "Screen/Save/Automata" "Automata" Title Top
++ "&Ant" Exec exec xlock -remote -nice 19 -nolock -mode ant -neighbors 4 +truchet
++ "Ant &Truchet" Exec exec xlock -remote -nice 19 -nolock -mode ant -neighbors 4 -truchet
++ "&Bee" Exec exec xlock -remote -nice 19 -nolock -mode ant -neighbors 6 +truchet
++ "B&ee Truchet" Exec exec xlock -remote -nice 19 -nolock -mode ant -neighbors 6 -truchet
++ "B&ug" Exec exec xlock -remote -nice 19 -nolock -mode bug
++ "&Demon" Exec exec xlock -remote -nice 19 -nolock -mode demon
++ "D&ilemma" Exec exec xlock -remote -nice 19 -nolock -mode dilemma
++ "&Life" Exec exec xlock -remote -nice 19 -nolock -mode life
++ "Life &Callahan" Exec exec xlock -remote -nice 19 -nolock -mode life -callahan -size 7
++ "Li&fe1d" Exec exec xlock -remote -nice 19 -nolock -mode life1d
++ "Life&3d" Exec exec xlock -remote -nice 19 -nolock -mode life3d
++ "L&oop" Exec exec xlock -remote -nice 19 -nolock -mode loop
++ "&Random" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allautomata -fullrandom -neighbors 0
++ "&Voters" Exec exec xlock -remote -nice 19 -nolock -mode voters
++ "&Wator" Exec exec xlock -remote -nice 19 -nolock -mode wator
++ "Wire" Exec exec xlock -remote -nice 19 -nolock -mode wire
+
+DestroyMenu "Screen/Save/Fractal"
+AddToMenu "Screen/Save/Fractal" "Fractal" Title Top
++ "&Coral" Exec exec xlock -remote -nice 19 -nolock -mode coral
++ "&Discrete" Exec exec xlock -remote -nice 19 -nolock -mode discrete
++ "Drift" Exec exec xlock -remote -nice 19 -nolock -mode drift -fullrandom
++ "&Flame" Exec exec xlock -remote -nice 19 -nolock -mode flame
++ "Flo&w" Exec exec xlock -remote -nice 19 -nolock -mode flow
++ "F&orest" Exec exec xlock -remote -nice 19 -nolock -mode forest
++ "&Hop" Exec exec xlock -remote -nice 19 -nolock -mode hop -fullrandom
++ "&IFS" Exec exec xlock -remote -nice 19 -nolock -mode ifs
++ "&Julia" Exec exec xlock -remote -nice 19 -nolock -mode julia +trackmouse
++ "J&uliaptr" Exec exec xlock -remote -nice 19 -nolock -mode julia -trackmouse
++ "&Kumppa" Exec exec xlock -remote -nice 19 -nolock -mode kumppa
++ "&Lightning" Exec exec xlock -remote -nice 19 -nolock -mode lightning
++ "L&yapunov" Exec exec xlock -remote -nice 19 -nolock -mode lyapunov -install
++ "&Mandelbrot" Exec exec xlock -remote -nice 19 -nolock -mode mandelbrot -install
++ "Mou&ntain" Exec exec xlock -remote -nice 19 -nolock -mode mountain
++ "&Random" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allfractal -fullrandom
++ "&Sierpinski" Exec exec xlock -remote -nice 19 -nolock -mode sierpinski
++ "Str&ange" Exec exec xlock -remote -nice 19 -nolock -mode strange
++ "&Thornbird" Exec exec xlock -remote -nice 19 -nolock -mode thornbird
++ "Trian&gle" Exec exec xlock -remote -nice 19 -nolock -mode triangle
++ "Turtl&e" Exec exec xlock -remote -nice 19 -nolock -mode turtle
++ "&Vines" Exec exec xlock -remote -nice 19 -nolock -mode vines
+
+DestroyMenu "Screen/Save/Geometry"
+AddToMenu "Screen/Save/Geometry" "Geometry" Title Top
++ "&Braid" Exec exec xlock -remote -nice 19 -nolock -mode braid
++ "&Fadeplot" Exec exec xlock -remote -nice 19 -nolock -mode fadeplot
++ "&Helix" Exec exec xlock -remote -nice 19 -nolock -mode helix -fullrandom
++ "H&yper" Exec exec xlock -remote -nice 19 -nolock -mode hyper
++ "&Ico" Exec exec xlock -remote -nice 19 -nolock -mode ico
++ "&Kaleid" Exec exec xlock -remote -nice 19 -nolock -mode kaleid
++ "&Laser" Exec exec xlock -remote -nice 19 -nolock -mode laser
++ "Lisa" Exec exec xlock -remote -nice 19 -nolock -mode lisa
++ "Lissie" Exec exec xlock -remote -nice 19 -nolock -mode lissie
++ "&Penrose" Exec exec xlock -remote -nice 19 -nolock -mode penrose +ammann
++ "Penrose &Ammann" Exec exec xlock -remote -nice 19 -nolock -mode penrose -ammann
++ "P&etal" Exec exec xlock -remote -nice 19 -nolock -mode petal
++ "&Qix" Exec exec xlock -remote -nice 19 -nolock -mode qix +complete
++ "Qix &complete" Exec exec xlock -remote -nice 19 -nolock -mode qix -complete
++ "&Random" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allgeometry
++ "R&otor" Exec exec xlock -remote -nice 19 -nolock -mode rotor
++ "&Shape" Exec exec xlock -remote -nice 19 -nolock -mode shape
++ "Sphere" Exec exec xlock -remote -nice 19 -nolock -mode sphere
++ "Spiral" Exec exec xlock -remote -nice 19 -nolock -mode spiral
++ "Spli&ne" Exec exec xlock -remote -nice 19 -nolock -mode spline
++ "&Tik_Tak" Exec exec xlock -remote -nice 19 -nolock -mode tik_tak
+
+DestroyMenu "Screen/Save/MarqueeMessage"
+AddToMenu "Screen/Save/MarqueeMessage" "MarqueeMessage" Title Top
++ "&Available" Exec exec xlock -remote -nice 19 -nolock -mode marquee -message "Hey, I'm available now!"
++ "&Brilliant!" Exec exec xlock -remote -nice 19 -nolock -mode marquee -message "WOW! $LOGNAME, You're Brilliant!"
++ "&Love You" Exec exec xlock -remote -nice 19 -nolock -mode marquee -message "You know, I Love You $LOGNAME."
+
+DestroyMenu "Screen/Save/NoseMessage"
+AddToMenu "Screen/Save/NoseMessage" "NoseMessage" Title Top
++ "&Available" Exec exec xlock -remote -nice 19 -nolock -mode nose -message "Hey, I'm available now!"
++ "&Brilliant!" Exec exec xlock -remote -nice 19 -nolock -mode nose -message "WOW! $LOGNAME, You're Brilliant!"
++ "&Love You" Exec exec xlock -remote -nice 19 -nolock -mode nose -message "You know, I Love You $LOGNAME."
+
+DestroyMenu "Screen/Save/Space"
+AddToMenu "Screen/Save/Space" "Space" Title Top
++ "&Bouboule" Exec exec xlock -remote -nice 19 -nolock -mode bouboule +use3d
++ "B&ouboule3d" Exec exec xlock -remote -nice 19 -nolock -mode bouboule -use3d
++ "&Galaxy" Exec exec xlock -remote -nice 19 -nolock -mode galaxy
++ "Gr&av" Exec exec xlock -remote -nice 19 -nolock -mode grav +trail +decay
++ "Grav &Decay" Exec exec xlock -remote -nice 19 -nolock -mode grav -decay
++ "Grav &Trail" Exec exec xlock -remote -nice 19 -nolock -mode grav -trail
++ "&Random Space" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allspace
++ "Ro&ck" Exec exec xlock -remote -nice 19 -nolock -mode star -rock
++ "&Star" Exec exec xlock -remote -nice 19 -nolock -mode star +rock +use3d +trek 0
++ "Star Tr&ek" Exec exec xlock -remote -nice 19 -nolock -mode star -trek 100
++ "Star&3d" Exec exec xlock -remote -nice 19 -nolock -mode star -use3d
++ "&World" Exec exec xlock -remote -nice 19 -nolock -mode world
+
+DestroyMenu "Screen/Save/Special"
+AddToMenu "Screen/Save/Special" "Special" Title Top
++ "&Blank" Exec exec xlock -remote -nice 19 -nolock -mode blank
++ "B&omb" Exec exec xlock -remote -nice 19 -nolock -mode bomb
++ "&Random 3d" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist all3d -use3d -fullrandom
++ "R&andom all" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist all -fullrandom -neighbors 0
++ "Ra&ndom nice" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allnice -fullrandom -neighbors 0
++ "Random &ptr" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allmouse -trackmouse -fullrandom
++ "Random &standard" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist all-allgl -fullrandom -neighbors 0
++ "Random &write" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allwrite -fullrandom
+
+DestroyMenu "Screen/Save/Text"
+AddToMenu "Screen/Save/Text" "Text" Title Top
++ "&AA Fire" Exec exec xterm  -T "AA Fire" -e aafire -driver slang
++ "&Rain" Exec exec xterm  -T "Rain" -e /usr/games/rain
++ "&Worms" Exec exec xterm  -T "Worms" -e /usr/games/worms
+
+DestroyMenu "Screen/Save/XPM"
+AddToMenu "Screen/Save/XPM" "XPM" Title Top
++ "&Bat" Exec exec xlock -remote -nice 19 -nolock -mode bat
++ "&Flag" Exec exec xlock -remote -nice 19 -nolock -mode flag
++ "&Image" Exec exec xlock -remote -nice 19 -nolock -mode image
++ "&Life" Exec exec xlock -remote -nice 19 -nolock -mode life
++ "Lif&e1d" Exec exec xlock -remote -nice 19 -nolock -mode life1d
++ "&Maze" Exec exec xlock -remote -nice 19 -nolock -mode maze
++ "&Puzzle" Exec exec xlock -remote -nice 19 -nolock -mode puzzle
++ "&Random" Exec exec xlock -remote -nice 19 -nolock -mode random -modelist allxpm -fullrandom
+
+DestroyMenu "Screen/Save"
+AddToMenu "Screen/Save" "Save" Title Top
++ "&Assorted" Popup Screen/Save/Assorted
++ "A&utomata" Popup Screen/Save/Automata
++ "&Beforelight" Exec exec beforelight
++ "&Fractal" Popup Screen/Save/Fractal
++ "&Geometry" Popup Screen/Save/Geometry
++ "&MarqueeMessage" Popup Screen/Save/MarqueeMessage
++ "&NoseMessage" Popup Screen/Save/NoseMessage
++ "&Space" Popup Screen/Save/Space
++ "S&pecial" Popup Screen/Save/Special
++ "&Text" Popup Screen/Save/Text
++ "&XPM" Popup Screen/Save/XPM
+
+DestroyMenu "Screen"
+AddToMenu "Screen" "Screen" Title Top
++ "&Lock" Popup Screen/Lock
++ "&Property Editor" Exec exec /usr/X11R6/bin/props
++ "&Save" Popup Screen/Save
+
+AddToMenu "Exit" "Exit"  Title  
++ "Restart" Restart 
++ "Exit" Quit  
+
+AddToMenu RootMenu "Hey Now" Title
++ "Term" Exec rxvt
++ ""  Nop
++ "GTerm" Exec gnome-terminal
++ "Browser" Exec mozilla-firefox
++ "Editor" Exec xemacs
++ "Mail" Exec evolution
++ "Mixer" Exec xmix
++ ""  Nop
+#+ "Modules" Popup Modules
++ "Screen" Popup Screen
++ ""  Nop
++ "Exit"  Popup Exit
+
+#
+# Functions
+#
+AddToFunc Move-or-Raise  "I" Raise
++ "M" Move
++ "D" Lower
+
+AddToFunc Move-or-Iconify  "I" Raise
++ "M" Move
++ "D" Iconify
+
+AddToFunc Move-or-Maximize  "I" Raise
++ "M" Move
++ "D" Maximize
+
+AddToFunc Resize-or-Raise  "I" Raise
++ "M" Resize
++ "D" Lower
+
+AddToFunc Iconify-and-Raise  "I" Iconify
++ "I" Raise
+
+AddToFunc FocusAndRaise "I" Focus
++ "I" Raise
+
+AddToFunc ChangeDefaultFocus "I" Style "*" $0
++ "I" Recapture
+
+AddToFunc MoveAndSwitchLeft
++ "I" MoveToPage -1p  0
++ "I" Scroll     -100 0
++ "I" Raise
+
+AddToFunc MoveAndSwitchRight
++ "I" MoveToPage +1p  0
++ "I" Scroll     +100 0
++ "I" Raise
+
+AddToFunc MoveAndSwitchLeft
++ "I" MoveToPage -1
+
+AddToFunc MoveAndSwitchRight
++ "I" MoveToPage +1
+
+AddToFunc ssh "I" Exec rxvt -n $0 -T $0 -e ssh1 $0
+AddToFunc ssh2 "I" Exec rxvt -n $0 -T $0 -e ssh2 $0
+AddToFunc telnet "I" Exec rxvt -n $0 -T $0 -e telnet $0
+AddToFunc rlogin "I" Exec rxvt -n $0 -T $0 -e rlogin $0
+
+AddToFunc rxvt "I" Exec rxvt -n $USER@$HOST -T $USER@$HOST
+#+ I ButtonStyle right Pixmap decor/right-button-back.xpm  -- Top Left
+#+ I ButtonStyle 1     Pixmap decor/left-button1-back.xpm  -- Top Left
+#+ I ButtonStyle 2     Pixmap decor/right-button2-back.xpm -- Top Left
+
+DestroyFunc FuncFvwmDeiconifyFocusAndRaise
+AddToFunc   FuncFvwmDeiconifyFocusAndRaise
++ I Iconify off
++ I Focus
++ I Raise
+
+# --------------
+# Menu Colorsets
+
+# inactive menu item fg+bg and menu face
+#Colorset 5 fg #ececec, bg black, Pixmap menuback/face.xpm, NoShape
+Colorset 5 fg #ececec, bg black, NoShape
+
+# active menu item fg+bg
+Colorset 6 fg #333333, bg #cccccc, Plain, NoShape
+
+# greyed menu item fg
+Colorset 7 fg grey40, bg grey40, Plain, NoShape
+
+# ----------------------------------------------------------------------------
+# II. Module Colorsets
+
+#-----------------
+# Common Colorsets
+
+# default for modules
+Colorset 10 fg #979b9b, bg grey35, Plain, NoShape
+
+# default hilight
+Colorset 11 fg #979b9b, bg white, NoShape
+
+# special
+Colorset 12 fg #979b9b, bg #555d5d, DGradient 50 #636f6f #484e4e, NoShape
+# a better color definition if we use blackbox modules is:
+# Colorset 10 fg #979b9b, bg #555d5d, Pixmap modcolor/TheToolbar700.xpm, NoShape
+
+# swallowed window
+Colorset 13 fg grey85, bg #485151, hi grey85, sh grey45, Plain, \
+	NoShape
+
+# default2 (FvwmPager or to get more colors in Buttons)
+Colorset 14 fg #979b9b, bg #555d5d, NoShape
+
+# default hilight2: (FvwmPager or to get more colors in a Buttons)
+Colorset 15 fg #979b9b, bg white, NoShape
+
+# tips/balloons
+Colorset 16 fg #ececec, bg #485151, Plain, NoShape
+
+# ----------------------------
+# Window List Module Colorsets
+
+# standard item
+Colorset 17 fg #979b9b, bg #555d5d, NoShape
+
+# active item
+#Colorset 18 fg #ffffff, bg #555d5d, NoShape
+Colorset 18 fg #ffffff, bg SteelBlue3, NoShape
+
+# iconified item
+Colorset 19 fg black, bg #555d5d, NoShape
+
+# pointed item
+Colorset 20 fg white, bg SteelBlue2, NoShape
+
+# ----------------------
+# Other Module Colorsets
+
+# FvwmIdent
+Colorset 21 fg yellow, bg black, Transparent, NoShape
+
+# FvwmConsole
+Colorset 22 fg yellow, bg black, Plain, NoShape
+
+# ----------------------------------------------------------------------------
+# III. Application Colorsets
+
+# regular terminal
+Colorset 30 fg #ffffff, bg #555d5d, Plain, NoShape
+
+# admin terminal
+Colorset 31 fg #a0f0f0, bg #555d5d, Plain, NoShape
+
+# remote terminal
+Colorset 32 fg #f0f0a0, bg #555d5d, Plain, NoShape
+
+# viewer terminal
+Colorset 33 fg grey20, bg grey90, Plain, NoShape
+
+# application run in the terminal, text editor
+Colorset 34 fg black, bg grey70, Plain, NoShape
+
+# dialog main area
+Colorset 35 fg white, bg #555d5d, Plain, NoShape
+
+# dialog text area
+Colorset 36 fg black, bg gray80, Plain, NoShape
+
+# xdaliclock
+Colorset 40 fg white, bg SteelBlue4, NoShape
+
+# ----------------------------------------------------------------------------
+# IV. Start/Stop Functions
+
+DestroyFunc FuncFvwmStartColors
+AddToFunc   FuncFvwmStartColors
++ I Style "FvwmIdent" ParentalRelativity
+
+DestroyFunc FuncFvwmStopColors
+AddToFunc   FuncFvwmStopColors
++ I Style "FvwmIdent" Opacity
+
+#
+# Module properties
+#
+DestroyFunc  FuncFvwmButtons-XXPrev
+AddToFunc    FuncFvwmButtons-XXPrev
++ I Current (FvwmButtons-XX) Prev (CirculateHit) Focus
++ I Prev (!Iconic CurrentPage) Focus
++ I Current Raise
++ I All (FvwmButtons-XX) Raise
+
+DestroyModuleConfig FvwmButtons-XX: *
+#*FvwmButtons-XX: Geometry 800x18+99-0
+#PipeRead 'echo "*FvwmButtons-XX: Geometry 800x18+"`expr "(" $[vp.width] - 800 ")" / 2`"-0"'
+PipeRead 'if [ -n "$FT_XINERAMA_PWIDTH" ]; then echo "*FvwmButtons-XX: Geometry 800x20+"`expr "(" $FT_XINERAMA_PWIDTH - 800 ")" / 2`"-0"; else echo "*FvwmButtons-XX: Geometry 800x20+"`expr "(" $[vp.width] - 800 ")" / 2`"-0";fi'
+*FvwmButtons-XX: BoxSize fixed
+*FvwmButtons-XX: Columns 80
+*FvwmButtons-XX: Rows 20
+*FvwmButtons-XX: Frame 0
+*FvwmButtons-XX: Colorset 12
+*FvwmButtons-XX: Padding 0 0
+
+*FvwmButtons-XX: ( \
+	7x14+1+3, Colorset 40,\
+	Swallow(Kill) "xdaliclock" `Exec exec xdaliclock -24 \
+	-fn lucidasans-bold-10  -fg white -bg SteelBlue4 \
+	-geometry +5000+5000` \
+)
+
+#*FvwmButtons-XX: ( \
+#	2x16+9+1, \
+#	Action Exec rxvt, \
+#	Icon mini.term.xpm \
+#)
+
+*FvwmButtons-XX: ( \
+	60x18+9+1, \
+	Swallow "FvwmIconMan" "Module FvwmIconMan" \
+)
+
+#*FvwmButtons-XX: ( \
+#	1x20+69+0
+#)
+
+*FvwmButtons-XX: ( \
+	9x18+70+1, \
+	Swallow "FvwmPager" "FvwmPager FvwmPager 0 0" \
+)
+
+*FvwmPager: Back SteelBlue4
+*FvwmPager: Fore White
+*FvwmPager: Font none
+*FvwmPager: Hilight Black
+#*FvwmPager: Geometry 160x40+0+0
+*FvwmPager: Geometry +5000+5000
+#*FvwmPagerSmallFont -*-times-medium-r-*-*-*-80-*-*-*-*-*-*
+*FvwmPager: Balloons Pager
+*FvwmPager: BalloonFont "xft:arial:size=10"
+*FvwmPager: SmallFont  "xft:lucidasans:size=8"
+*FvwmPager: UseSkipList
+#*FvwmPager: NoSeparators
+Style "FvwmPager" BorderWidth 1
+#Style "FvwmPager" !Title, !Handles, Sticky, WindowListSkip, \
+#  !Lenience, BorderWidth 1, TitleAtTop, CirculateSkip
+
+## more new
+
+# Style FvwmButtons  NoTitle, BorderWidth 0, HandleWidth 0, Sticky, WindowListSkip, CirculateSkip, ParentalRelativity
+
+
+# DestroyModuleConfig FvwmButtons: *
+# *FvwmButtons: Frame 0
+# *FvwmButtons: Colorset 3
+# *FvwmButtons: Geometry 1024x20+0-0
+# *FvwmButtons: Columns 1
+# *FvwmButtons: (1x1, Swallow "xdaliclock" "Exec exec xdaliclock -24 -bd white -fg white -bg SteelBlue4 -builtin0 -memory high")
+
+Style "FvwmButtons-XX" BorderWidth 1, NoTitle, NoHandles, Sticky, \
+  FVWMBorder, WindowListSkip, NeverFocus, CirculateSkip, TitleAtBottom
+#	StaysOnTop
+Style "FvwmIconMan" BorderWidth 0, NoTitle, NoHandles, Sticky, FVWMBorder, \
+  WindowListSkip
+
+
+
+# enforce no label!
+#*FvwmPager: Font none
+
+## icon man
+DestroyFunc FuncFvwmIconManWarpToMiddle
+AddToFunc   FuncFvwmIconManWarpToMiddle
++ I WarpToWindow 50 50
+
+DestroyFunc FuncFvwmIconFocusAndOptions
+AddToFunc   FuncFvwmIconFocusAndOptions
++ I Focus NoWarp
++ I Popup MenuFvwmWindowOps2 Mouse c -102m
+
+DestroyModuleConfig FvwmIconMan: *
+# it should be 0x1+0-0 anyway
+*FvwmIconMan: ManagerGeometry 10x1+0-0
+*FvwmIconMan: ButtonGeometry 100x18
+*FvwmIconMan: Font "xft:lucida:Bold:size=10"
+
+*FvwmIconMan: Colorset    12
+
+*FvwmIconMan: IconColorset  19
+*FvwmIconMan: PlainColorset 17
+*FvwmIconMan: SelectColorset 20
+*FvwmIconMan: FocusColorset 18
+*FvwmIconMan: FocusAndSelectColorset 20
+
+*FvwmIconMan: FollowFocus true
+
+*FvwmIconMan: IconButton up
+*FvwmIconMan: PlainButton up
+*FvwmIconMan: TitleButton up
+*FvwmIconMan: FocusButton down
+*FvwmIconMan: SelectButton up
+*FvwmIconMan: FocusAndSelectButton down
+
+*FvwmIconMan: Resolution page
+*FvwmIconMan: DrawIcons false
+*FvwmIconMan: UseWinList true
+*FvwmIconMan: Format %i
+*FvwmIconMan: Action Mouse 1 A sendcommand FuncFvwmDeiconifyFocusAndRaise
+*FvwmIconMan: Action Mouse 2 A sendcommand FuncFvwmIconManWarpToMiddle
+*FvwmIconMan: Action Mouse 3 A sendcommand FuncFvwmIconFocusAndOptions
+*FvwmIconMan: Shape true
+
+*FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
+
+#*FvwmIconMan: Resolution pageDestroyFunc FuncFvwmButtons-XXNext
+
+#AddToFunc    FuncFvwmButtons-XXNext
+#+ I Next (!Iconic CurrentPage) Focus
+#+ I Current Raise
+#+ I All (FvwmButtons-XX) Raise
+

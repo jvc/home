@@ -1,0 +1,76 @@
+! Fonts
+!Xft.embolden: true
+!Xft.dpi:                96
+Xft.dpi:                128
+Xft.autohint:           true
+Xft.hinting:            false
+Xft.hintstyle:          hintnone
+Xft.antialias:          true
+Xft.rgba:               none
+
+! Emacs
+Emacs.FontBackend: xft
+Emacs*font: Monospace-9
+Emacs.toolBar: off
+Emacs.menuBar: off
+! Emacs*verticalScrollBars: off
+! Emacs.default.attributeFont: Monospace-9
+! Emacs*background: black
+! Emacs*foreground: lightgray
+! Emacs.default.attributeBackground: black
+! Emacs.default.attributeForeground: lightgray
+! Emacs*popup*highlightForeground: Red3
+! Emacs.modeline*attributeBackground: Black
+! Emacs.modeline*attributeForeground: Red
+! Emacs.text-cursor*attributeBackground: Red3
+! Emacs.geometry: +0+0
+! Emacs.iconName: emacs
+! Emacs*title: emacs
+
+! Terminals
+xterm*loginShell:        false
+xterm*scrollBar:         false
+xterm*cursorBlink:       false
+xterm*saveLines:         65535
+xterm*highlightSelection: true
+xterm*renderFont: default
+xterm*faceName:      xft:Monospace:size=9
+
+URxvt*font:            xft:Monospace:size=9
+URxvt*boldFont:        xft:Monospace:size=9
+URxvt*borderless:      1
+URxvt*letterSpace:     -1
+URxvt*metaSendsEscape: True
+URxvt*multiScroll:     True
+URxvt*scrollBar:       False
+URxvt*scrollBar_right: True
+URxvt*scrollTtyOutput: False
+URxvt*scrollTtyKeypress: True
+URxvt*scrollstyle:     xterm
+URxvt*termName:        xterm-256color
+URxvt*underLine:       False
+URxvt*visualBell:      False
+
+URxvt.matcher.button:  1
+URxvt.perl-ext-common: default,selection,clipboard,searchable-scrollback<Control-Shift-R>
+URxvt*charClass:       0-32:1,33-126:2,127-160:3,161-255:2
+URxvt.urgentOnBell:    True
+URxvt.urlLauncher:     firefox
+URxvt.keysym.F2: OQ
+URxvt.keysym.F3: OR
+URxvt.keysym.F4: OS
+URxvt.keysym.F7: ~.
+URxvt.keysym.F8: ~~.
+URxvt.keysym.F9: ~~~.
+URxvt.keysym.C-S-V: perl:clipboard:paste
+URxvt.keysym.C-S-B: perl:clipboard:slowpaste
+URxvt*geometry:        80x35
+URxvt.meta8: False
+!Urxvt*internalBorder:     5
+!Urxvt*perl-lib:           /usr/lib/urxvt/perl/
+URxvt.iso14755: False
+URxvt.iso14755_52: False
+
+! Colors
+#include ".Xdefaults-rxvt-colors"
+

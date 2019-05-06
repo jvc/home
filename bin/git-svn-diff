@@ -1,0 +1,41 @@
+#!/bin/bash
+BRANCH=$(basename $(git svn info --url))
+type=$(basename ${BRANCH})
+if [[ ${type} == tags ]]; then
+        BRANCH=tags/${BRANCH}
+fi
+
+SVN_REV=$(git svn find-rev ${BRANCH})
+if [[ $# = 1 ]]; then
+        REV1=${1}^
+        REV2=${1}
+        shift
+elif [[ $# = 2 ]]; then
+        REV1=${1}
+        REV2=${2}
+        shift
+        shift
+else
+        REV1=$(git rev-list --date-order --max-count=1 ${BRANCH})
+fi
+git diff --no-prefix ${REV1} ${REV2} $* | sed "/^diff/ {
+    N
+    N
+    N
+    /\nnew/ {
+        N
+        s/^diff --git \(.\+\) \1\n.*\n+.*/Index: \1\\
+===================================================================\\
+--- \1  (revision 0)\\
++++ \1  (revision 0)/
+    }
+    /^diff/ {
+        /\ndeleted/ {
+            N
+        }
+        s/^diff --git \(.\+\) \1\n.*\n+.*/Index: \1\\
+===================================================================\\
+--- \1  (revision ${SVN_REV})\\
++++ \1  (working copy)/
+    }
+}"

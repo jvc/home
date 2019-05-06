@@ -1,0 +1,49 @@
+#! perl
+
+use Time::HiRes qw(usleep);
+
+# sub on_sel_grab {
+#     my $query=quotemeta $_[0]->selection;
+#     $query=~ s/\n/\\n/g;
+#     $query=~ s/\r/\\r/g;
+#     system( "echo -en " . $query . " | xsel -i -b -p" );
+# }
+sub dbg_msg {
+   open(my $debugfl,'>>/home/jvc/rxvt-clipboard-debug') or die;
+   print $debugfl "--\n@_\n";
+   close $debugfl;
+}
+
+sub paste {
+   my ($self,$slow) = @_;
+   my @output = `xclip -o -selection clipboard`;
+   if ($#output > 0) {
+      foreach my $line (@output) {
+         # Trim whitespace at the end of each line
+         $line =~ s/\s*$//;
+         my $encoded = $self->locale_encode($line);
+         $self->tt_write($encoded);
+	 $self->tt_write("\n");
+         usleep(800000) if ($slow);
+      }
+   } else {
+      my $encoded = $self->locale_encode("@output");
+      #$encoded =~ s///g;
+      $self->tt_write($encoded);
+   }
+
+   ()
+}
+
+
+sub on_user_command {
+   my ($self, $cmd) = @_;
+
+   if ($cmd eq "clipboard:paste") {
+      $self->paste(0);
+   } elsif ($cmd eq "clipboard:slowpaste") {
+      $self->paste(1);
+   }
+
+   ()
+}

@@ -1,0 +1,10 @@
+mktags()
+{
+   for dir in $@; do
+      if [[ -f $dir/GTAGS ]]; then
+          (cd $dir && global -u)
+      else
+          (cd $dir && gtags)
+      fi
+   done
+}

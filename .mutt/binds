@@ -1,0 +1,48 @@
+# Key bindings
+#
+#	maps:
+#		alias		alias menu
+#		attach		attachment menu
+#		browser		directory browser
+#		compose		compose menu
+#		index		message index
+#		pgp		pgp menu
+#		postpone	postponed message recall menu
+#		generic		generic keymap for all of the above
+#		editor		line editor
+#		pager		text viewer
+#		
+
+bind generic "\e<" first-entry	# emacs-like bindings for moving to top/bottom
+bind generic \e> last-entry
+bind generic { top-page
+bind generic } bottom-page
+bind generic \177 last-entry
+bind index . next-unread
+bind index , previous-unread
+bind index R read-thread
+
+#bind editor <TAB> complete-query
+#bind editor \ci complete-query
+bind editor \cn history-down
+bind editor \cp history-up
+bind index \cn next-entry
+bind index \cp previous-entry
+bind index \en next-page
+bind index \ep previous-page
+bind generic \ep last-entry
+bind generic \cn next-entry
+bind generic \cp previous-entry
+bind pager \cn next-entry
+bind pager \cp previous-entry
+bind pager \en next-page
+bind pager \ep previous-page
+
+
+# Add this to your ~/.muttrc to integrate spamassassin and mutt
+# spamassassin report and classify as spam
+#macro index S "|/usr/bin/spamassassin -r"
+# spamassassin classify as ham
+#macro index H "|/usr/bin/sa-learn --ham  --no-rebuild --single"
+# rebuild the spamassassin bayes filter db
+#macro index R "!/usr/bin/sa-learn --rebuild"

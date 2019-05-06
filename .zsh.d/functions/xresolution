@@ -1,0 +1,4 @@
+xresolution()
+{
+   xdpyinfo  | perl -ne 'print "$1x$2\n" if (/dimensions:\s+(\d+)x(\d+) pixels/);'
+}

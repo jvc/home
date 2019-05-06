@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import sys
+
+# bit at pos 0 is vcpu0
+# ...    pos 1 is vcpu1
+
+if __name__ == '__main__':
+    mask = 0
+    for arg in sys.argv[1:]:
+        mask |= (1 << (int(arg)))
+
+    print "0x%08x" % mask
+

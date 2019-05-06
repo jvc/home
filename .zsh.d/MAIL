@@ -1,0 +1,4 @@
+# [ -d "$HOME/Maildir" ] && {
+#     export MAIL="$HOME/Maildir"
+# }
+return 0

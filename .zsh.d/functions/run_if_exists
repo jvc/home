@@ -1,0 +1,5 @@
+run_if_exists()
+{
+    file=$1
+    [[ -f  $file ]] && source $file
+}

@@ -1,0 +1,56 @@
+[[ -e /etc/debian_version ]] || return 0
+
+##
+# APT Package MGMT
+##
+if which aptitude >/dev/null 2>&1; then
+    APTBIN=aptitude
+    alias apt="sudo aptitude"
+    alias aptp="sudo aptitude purge"
+    alias aptsu="sudo aptitude safe-upgrade"
+    alias aptfu="sudo aptitude full-upgrade"
+else
+    APTBIN=apt-get
+    alias aptp="sudo $APTBIN purge"
+    alias aptsu="sudo apt-get dist-upgrade"
+    alias aptfu="sudo $APTBIN upgrade"
+    alias aptbd="sudo $APTBIN build-dep"
+fi
+
+alias aptu="sudo $APTBIN update"
+
+
+# Common apt stuff
+alias aptsh="apt-cache show"
+alias apts="apt-cache search"
+
+aptbd() {
+    sudo apt-get build-dep $*
+}
+
+aptsb() {
+    aptbd $1
+    apt-get source -b $1
+}
+
+apti() {
+    sudo $APTBIN install $*
+    hash -r
+}
+
+# # keys
+# alias aptkeys="grep \"# run: \" /etc/apt/sources.list | cut -c8- | sh"
+# # install favorites
+# alias aptifav='apti `grep -v "^#" share/favorite_debs_server`'
+
+aptk()
+{
+    gpg --keyserver pgpkeys.mit.edu --recv-key $1 && {
+        gpg -a --export $1 | sudo apt-key add - }
+}
+
+delusergroup()
+{
+    deluser $1
+    delgroup $1
+}

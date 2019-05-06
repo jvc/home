@@ -1,0 +1,9 @@
+prompt_jvc_rprompt()
+{
+    # local sref
+    # sref=$(git symbolic-ref HEAD 2> /dev/null)
+    # if [[ $? -eq 0 ]]; then
+    if [[ -n $vcs_info_msg_0_ ]]; then
+        print "%{$fg_bold[blue]%}($_jvc_prompt_vcs_color${vcs_info_msg_0_}%{$fg_bold[blue]%})%{$reset_color%}"
+    fi
+}

@@ -1,0 +1,11 @@
+# return 0 if running a tty that we know the user could detatch from.
+# tmux sets TMUX, GNU Screen sets WINDOW and STY. WINDOW seems more
+# likely to be used by other programs, so use STY.
+tty_detachable()
+{
+    if [[ -n $TMUX ]] || [[ -n $STY ]]; then
+        return 0
+    else
+        return 1
+    fi
+}

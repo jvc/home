@@ -1,0 +1,32 @@
+#
+# Compare the contents of 2 tar archives.
+#
+tarcmp()
+{
+   local oldFile="$1"
+   local newFile="$2"
+
+   [ -r "$oldFile" -a -r "$newFile" ] ||
+   {
+      echo "Usage: tarcmp <oldFile> <newFile>"
+      return 1
+   }
+
+   local oldContFile="$oldFile.contents"
+   local newContFile="$newFile.contents"
+   
+   tar -ztf $oldFile | sort > $oldContFile
+   tar -ztf $newFile | sort > $newContFile
+   
+   which meld >/dev/null
+   if [ $? -eq 0 ]
+   then
+      meld $oldContFile $newContFile
+   else
+      diff $oldContFile $newContFile
+   fi
+
+   rm -f $oldContFile $newContFile
+
+   return 0
+}

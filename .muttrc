@@ -1,0 +1,148 @@
+# set up the sidebar, default not visible
+#set sidebar_width=12
+#set sidebar_visible=yes
+#set sidebar_delim='|'
+#set sidebar_sort=yes
+
+#set smtp_url="smtp://exchange.postoffice.net:587/"
+#set smtp_pass=""
+
+#set mbox_type=Maildir
+#set spoolfile="~/Maildir/"		# where i keep my mailboxes
+#set folder="~/Maildir/"		# where i keep my mailboxes
+set mask="!^\\.[^.]"
+#set record="+"		# default location to save outgoing mail
+unset record
+set postponed="+.Drafts"		# default location to save outgoing mail
+
+#mailboxes ! + `\
+#for file in ~/Maildir/.*; do \
+#  box=$(basename "$file"); \
+#  if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
+#      -a ! "$box" = '.subscriptions' ]; then \
+#    echo -n "\"+$box\" "; \
+#  fi; \
+#done`
+#mailboxes = +Search
+
+#macro generic \Cs "<shell-escape>mairix " "search via mairix"
+#macro generic \ea "<shell-escape>mairix " "search via mairix"
+macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro index \Cr \
+  "<tag-pattern>~N\n<tag-prefix><clear-flag>N<tag-pattern>~O\n<tag-prefix><clear-flag>O" \
+  "Mark all new messages as read"
+
+# macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+
+auto_view text/html
+unset ascii_chars		# use ASCII instead of ACS chars for threads
+set alias_file=~/.mutt/aliases
+source $alias_file
+set attribution="On %d, %n wrote:"	# how to attribute replies
+set autoedit			# go to the editor right away when composing
+set beep_new = yes
+set check_new = yes
+
+#set auto_tag			# always operate on tagged messages
+#set charset="iso-8859-1"	# character set for your terminal
+set noconfirmappend		# don't ask me if i want to append to mailboxes
+#set confirmcreate		# prompt when creating new files
+set copy=yes			# always save a copy of outgoing messages
+set delete=yes			# purge deleted messages without asking
+#set edit_headers		# let me edit the message header when composing
+set fast_reply		# skip initial prompts when replying
+unset fcc_attach			# keep attachments in copies of sent messages?
+#set forward_decode		# weed and MIME decode forwaded messages
+#set forward_format="[%a: %s]"	# subject to use when forwarding messages
+set forward_format="[Fwd: %s]"	# subject to use when forwarding messages
+set forward_quote		# quote the header and body of forward msgs
+#set hdr_format="%4C %Z %{%m/%d} [%2N] %-15.15F (%4c) %s"
+set hdr_format="%4C %Z %{%m/%d} %-15.15F %?M?( +%-2M)&(%4c)? %s" # format of the index
+#set hdrs			# include `my_hdr' lines in outgoing messages
+#set header			# include message header when replying
+set help			# show the help lines
+set history=20			# number of lines of history to remember
+set include			# always include messages when replying
+set indent_string="> "		# how to quote replied text
+#set locale="C"			# locale to use for printing time
+set mailcap_path="~/.mailcap:/etc/mailcap:/usr/local/share/mailcap"
+unset mark_old			# i don't care about whether a message is old
+set mail_check=60		# how often to poll for new mail
+set menu_scroll		# no implicit next-page/prev-page
+unset metoo			   # remove my address when replying
+set mime_forward		# use message/rfc822 type to forward messages
+set move=no			# don't ask about moving messages, just do it
+#set pager=less			# some people prefer an external pager
+#set pager_context=3		# no. of lines of context to give when scrolling
+set pager_format="-%S- %-20.20f %s"	# format of the pager status bar
+set pager_index_lines=6		# how many index lines to show in the pager
+set pager_stop			# don't move to the next message on next-page
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x81441504 -- -r %r -- %f"
+set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x81441504 -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_create_traditional=yes
+set pgp_autosign=no
+set pgp_sign_as="0x81441504"
+set pgp_replyencrypt=yes
+set pgp_timeout=1800
+set pgp_good_sign="^gpg: Good signature from"
+##set pgp_strict_enc		# use Q-P encoding when needed for PGP
+set postponed=+postponed	# mailbox to store postponed messages in
+#set post_indent_string='---end quoted text---'
+set print=ask-yes		# ask me if I really want to print messages
+set print_command="lpr"	# how to print things (I like to save trees)
+set noprompt_after	# ask me for a command after the external pager exits
+#set quote_regexp="^ *[a-zA-Z]*[>:#}]"	# how to catch quoted text
+set read_inc=25			# show progress when reading a mailbox
+#set recall			# prompt to recall postponed messages
+set reply_to			# always use reply-to if present
+#set reply_regexp="^(re:[ \t]*)+"# how to identify replies in the subject:
+#set resolve		# move to the next message when an action is performed
+set reverse_alias		# attempt to look up my names for people
+set reverse_name
+set nosave_empty		# remove files when no messages are left
+set signature="~/.signature"	# file which contains my signature
+set sort=threads
+set sort_browser=date
+set sort_aux=reverse-last-date-received
+set status_format="-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?  %l]---(%s)-%>-(%P)---"
+set strict_threads		# don't thread by subject
+set tilde      # virtual lines to pad blank lines in the pager
+set timeout = 600
+#set timeout=0			# timeout for prompt in the index menu
+set tmpdir=~/tmp		# where to store temp files
+#set to_chars=" +TCF"
+#set use_8bitmime		# enable the -B8BITMIME sendmail flag
+set nouse_domain		# don't qualify local addresses with $domain
+set visual=vim			# editor invoked by ~v in the builtin editor
+#set nowait_key			# prompt when a pipe returns normal status
+set write_inc=25		# show progress while writing mailboxes
+unset markers
+
+ignore *
+unignore	from: subject to cc mail-followup-to date x-mailer x-url
+
+source ~/.mutt/binds
+
+source ~/src/dracula-mutt/dracula.muttrc
+
+# set query_command="goobook query '%s'"
+unset query_command
+
+#folder-hook example unmy_hdr
+#folder-hook example my_hdr From:
+
+unhdr_order *
+hdr_order date from subject to cc
+
+source ~/.mutt/profile

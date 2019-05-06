@@ -1,0 +1,7 @@
+tcprwfixpcapcsum() {
+	local fname
+	local newfname
+	fname=$1
+	newfname=${fname%.cap}-fixed.cap
+	tcprewrite --fixcsum --infile=$fname --outfile=$newfname
+}

@@ -1,0 +1,5 @@
+scanto()
+{
+    local file=$1
+    scanimage --resolution 200 --format=png >${file}.png
+}

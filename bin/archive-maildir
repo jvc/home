@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cleanup-maildir -d 1 --age=120 --archive-folder=Archive archive INBOX
+cleanup-maildir -d 1 --age=90 --archive-folder=Archive.src archive src
+#cleanup-maildir -d 1 --age=90 --archive-folder=Archive.issues archive issues
+#cleanup-maildir -d 1 --age=90 --archive-folder=Archive.group archive group

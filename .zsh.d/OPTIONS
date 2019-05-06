@@ -1,0 +1,52 @@
+# Options for interactive shell
+
+# Confirm clobber 
+setopt no_clobber
+
+# Job control
+setopt notify long_list_jobs auto_resume bg_nice nohup
+
+# Directories
+setopt auto_cd cdable_vars 
+setopt auto_pushd pushd_minus pushd_to_home push_dsilent pushd_ignore_dups
+unsetopt auto_name_dirs
+
+# IO
+setopt multios
+
+# Mail notification
+unsetopt mail_warning
+
+# cshnullglob
+setopt cshnullglob
+
+# Completion options
+#setopt auto_list
+setopt auto_menu 
+setopt complete_in_word
+unsetopt rec_exact
+unsetopt list_ambiguous
+setopt auto_param_slash auto_remove_slash
+
+# Globbing
+setopt extended_glob
+unsetopt glob_dots
+
+# Corrections
+setopt correct
+unsetopt correct_all
+
+# History sizes
+HISTFILE=$HOME/.zhistory
+HISTSIZE=30000
+SAVEHIST=$HISTSIZE
+setopt append_history
+setopt share_history
+setopt hist_verify
+setopt inc_append_history
+#setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+# evil sh_wordsplit
+setopt sh_wordsplit

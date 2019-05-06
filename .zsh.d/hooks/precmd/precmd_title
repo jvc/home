@@ -1,0 +1,4 @@
+precmd_title()
+{
+    title "%m:%55<...<%~%#"
+}

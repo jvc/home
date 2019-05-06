@@ -1,0 +1,23 @@
+#bindkey -v
+bindkey -e
+
+if (( ${+widgets[.history-incremental-pattern-search-backward]} )); then
+    bindkey -M viins '^r' history-incremental-pattern-search-backward
+    bindkey -M vicmd '^r' history-incremental-pattern-search-backward
+    bindkey '^r' history-incremental-pattern-search-backward
+else
+    bindkey -M viins '^r' history-incremental-search-backward
+    bindkey -M vicmd '^r' history-incremental-search-backward
+fi
+if (( ${+widgets[.history-incremental-pattern-search-forward]} )); then
+    bindkey -M viins '^s' history-incremental-pattern-search-forward
+    bindkey -M vicmd '^s' history-incremental-pattern-search-forward
+    bindkey '^s' history-incremental-pattern-search-forward
+else
+    bindkey -M viins '^s' history-incremental-search-forward
+    bindkey -M vicmd '^s' history-incremental-search-forward
+fi
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line

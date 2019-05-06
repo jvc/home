@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=jvc_zen
+Type=X-GNOME-Metatheme
+Comment=
+
+[X-GNOME-Metatheme]
+GtkTheme=Human-Zenburn
+MetacityTheme=Ambiance
+IconTheme=Humanity-Dark
+GtkColorScheme=fg_color:#3f3f3f,bg_color:#dcdccc,base_color:#FFF,text_color:#3f3f3f,selected_bg_color:#688060,selected_fg_color:#dcdccc,tooltip_bg_color:#efefaf,tooltip_fg_color:#3f3f3f
+CursorTheme=Human
+CursorSize=18

@@ -1,0 +1,85 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+ 
+# version 0.3
+ 
+$\="\n";
+ 
+ 
+# TODO
+# * wrap converter to function
+# * testsuite
+ 
+#--- flags  
+my $flag_interactive; # true => no extra escaping of backslashes
+ 
+ 
+# my $RE='\w*(a|b|c)\d\(';
+# my $RE='\d{2,3}';
+# my $RE='"(.*?)"';
+# my $RE="\0".'\"\t(.*?)"';
+my $RE='/scripts/[^\.]+';
+ 
+print "Perlcode:\t $RE";
+ 
+#--- encode all \0 chars as escape sequence
+$RE=~s#\0#\\0#g;
+ 
+#--- substitute pairs of backslashes with \0
+$RE=~s#\\\\#\0#g;
+ 
+#--- hide escape sequences of \t,\n,... with 
+#    corresponding ascii code
+my %ascii=(
+       t =>"\t",
+       n=> "\n"
+      );
+my $kascii=join "|",keys %ascii;
+ 
+$RE=~s#\\($kascii)#$ascii{$1}#g;
+ 
+ 
+#---  normalize needless escaping
+# e.g.  from /\"/ to /"/, since it's no difference in perl 
+# but might confuse elisp
+ 
+$RE=~s#\\"#"#g;
+ 
+#--- toggle escaping of 'backslash constructs'
+my $bsc='(){}|';
+$RE=~s#[$bsc]#\\$&#g;  # escape them once
+$RE=~s#\\\\##g;        # and erase double-escaping
+ 
+ 
+ 
+#--- replace character classes
+my %charclass=(
+        w => 'word' ,   # TODO: emacs22 already knows \w ???
+        d => 'digit',
+        s => 'space'
+       );
+ 
+my $kc=join "|",keys %charclass;
+$RE=~s#\\($kc)#[[:$charclass{$1}:]]#g; 
+ 
+ 
+ 
+#--- unhide pairs of backslashes
+$RE=~s#\0#\\\\#g;
+ 
+#--- escaping for elisp string
+unless ($flag_interactive){
+  $RE=~s#\\#\\\\#g; # ... backslashes
+  $RE=~s#"#\\"#g;   # ... quotes
+}
+ 
+#--- unhide escape sequences of \t,\n,...
+my %rascii= reverse %ascii;
+my $vascii=join "|",keys %rascii;
+$RE=~s#($vascii)#\\$rascii{$1}#g;
+ 
+print "Elispcode:\t $RE";
+ 
+#TODO whats the elisp syntax for \0 ???

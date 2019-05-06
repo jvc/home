@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+
+use XML::XML2JSON;
+
+$/ = undef;
+$_ = <>;
+
+my $x2j = XML::XML2JSON->new('module', 'JSON::XS', 'pretty', 'true');
+
+$/ = "\n";
+
+print $x2j->convert($_);

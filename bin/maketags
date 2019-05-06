@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+# Recursively make tags file for source
+#
+
+#FILE_TYPES='.*\.([chCH]|py|pyx|[ch](pp|xx|\+\+)|hh|cc|h\.in|lf|yb)$'
+FILE_TYPES='.*\.([chCH]|[ch](pp|xx|\+\+)|hh|cc|h\.in|lf|yb|S)$'
+
+USAGE="[-hk] [<directories>]"
+LONGUSAGE="\t-h\tPrint this help message
+\t-k\tKernel database (no system includes)
+\t<directories>\tDirectories to scan (defaults to '.')"
+
+while getopts ":hk" option; do
+	case ${option} in
+		k ) KERNEL="-k";;
+		h ) usage;;
+		\? ) usage "Invalid argument ${OPTARG}";;
+		* ) usage "Invalid argument ${option}";;
+	esac
+done
+
+SKIPRE=$(echo "-e /"{arch/alpha,arch/arm,arch/avr32,arch/blackfin,arch/cris,arch/frv,arch/h8300,arch/ia64,arch/m32r,arch/m68k,arch/m68knommu,arch/microblaze,arch/mn10300,arch/parisc,arch/powerpc,arch/s390,arch/score,arch/sh,arch/sparc,arch/um,arch/xtensa}/)
+
+# Store how we got here, so vim can re-run the same arguments
+echo "$0 $@" > ".#maketags"
+
+if [ "${OPTIND}" != "0" ]; then
+	shift $((OPTIND-1))
+fi
+
+if [ -z "$1" ]; then
+	TMP_DIRS="."
+else
+	# annoying but this gets us fullpath names for eveyfile so CSCOPE_DB can
+	# be used
+	DIRS=""
+	args=("$@")
+	for i in "${args[@]}"
+	do
+		DIRS="${DIRS} ${PWD}/${i}"
+	done
+fi
+
+if [ -n "${KERNEL}" ]; then
+	echo "Making kernel tags for $DIRS"
+else
+	echo "Making tags for $DIRS"
+fi
+
+TMPFILE=`mktemp -t maketags.XXXXXXXXXX` || die "Couldn't make tempfile"
+echo "TMPFILE = ${TMPFILE}"
+
+for dir in $DIRS; do
+    echo "Building tags for $dir"
+    if [[ -d $dir/.git ]]; then
+        (cd $dir && git ls-files | egrep ${FILE_TYPES} | sed "s:^:$dir/:") >> ${TMPFILE}
+    else
+        find $dir -type f | egrep ${FILE_TYPES} >> ${TMPFILE}
+    fi
+done
+
+
+if [ -n "${SKIPRE}" ]; then
+	egrep -v ${SKIPRE} ${TMPFILE} > cscope.files
+else
+	mv ${TMPFILE} cscope.files
+fi
+rm -f ${TMPFILE}
+cscope -q -L ${KERNEL} -i cscope.files
+ctags --c-kinds=-m --sort=yes -L- < cscope.files

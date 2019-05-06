@@ -1,0 +1,12 @@
+# autoload -Uz vcs_info
+
+# See the documentation for the format string definition
+# This generates a fancy coloured string with $vcs:($branch)
+# zstyle ':vcs_info:*' formats '%b'
+# zstyle ':vcs_info:*' enable git
+#zstyle ':vcs_info:*' enable svn
+
+# Prompt
+autoload -Uz promptinit
+promptinit
+prompt jvc

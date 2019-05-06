@@ -1,0 +1,15 @@
+archive ()
+{
+sourceDir=$1
+if [ -d $sourceDir ]
+then
+  targetDir=$HOME/archive
+  targetFile=$sourceDir-`stamp`.tar.bz2
+
+  [[ -d $targetDir ]] || mkdir -p $targetDir
+
+  tar --bzip2 -cvf $targetDir/$targetFile $sourceDir && rm -rf $sourceDir
+else
+  print "Directory $1 does not exist"
+fi
+}

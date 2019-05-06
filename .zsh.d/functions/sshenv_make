@@ -1,0 +1,35 @@
+# Add the environment for this ssh session to disk. generally call
+# this from login shells only. It is wasteful to call this when a new
+# xterm is created, or when a new screen/ttymux window is created.
+sshenv_make()
+{
+    # Only save the environment if AUTHSOCK is defined and is not
+    # already symlink. This indicates we made it already, or something
+    # else is manipulating it
+    if [[ -z $SSH_AUTH_SOCK ]] || [[ -L $SSH_AUTH_SOCK ]]; then
+        return 0
+    fi
+
+    if [[ ! -S $SSH_AUTH_SOCK ]]; then
+        print "$0: warning: bad SSH_AUTH_SOCK"
+        return 1
+    fi
+
+    local authsym=$HOME/.sshenv.${SSH_AUTH_SOCK:t}
+    local rcfile=$authsym.rc
+
+    # symlink and set the env var to the link, force
+    ln -fs $SSH_AUTH_SOCK $authsym
+    SSH_AUTH_SOCK=$authsym
+
+    # force create env file
+<<EOF >! $rcfile
+SSH_AUTH_SOCK="$SSH_AUTH_SOCK"
+SSH_CLIENT="$SSH_CLIENT"
+SSH_CONNECTION="$SSH_CONNECTION"
+SSH_TTY="$SSH_TTY"
+DISPLAY="$DISPLAY"
+EOF
+
+    return 0
+}

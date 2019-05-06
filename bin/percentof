@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+import sys
+
+def main():
+    """Entry
+    """
+    arg1 = sys.argv[1].replace(',', '')
+    arg2 = sys.argv[2].replace(',', '')
+    vala = float(arg1)
+    valb = float(arg2)
+
+    aofb = (vala * 100) / valb
+    bofa = (valb * 100) / vala
+
+    print "%d is %.2f%% of %d" % (vala, aofb, valb)
+    print "%d is %.2f%% of %d" % (valb, bofa, vala)
+
+    if vala == valb:
+        return
+    elif vala > valb:
+        (hi, lo) = (vala, valb)
+    else:
+        (lo, hi) = (vala, valb)
+
+    diff = (hi - lo)
+    incr = (diff * 100) / lo
+    decr = (diff * 100) / hi
+
+    print "%d increased %.2f%% is %d" % (lo, incr, hi)
+    print "%d decreased %.2f%% is %d" % (hi, decr, lo)
+
+    valsum = vala + valb
+    aofsum = (vala * 100) / valsum
+    bofsum = (valb * 100) / valsum
+
+    print "%d is %.2f%% of the sum %d" % (vala, aofsum, valsum)
+    print "%d is %.2f%% of the sum %d" % (valb, bofsum, valsum)
+
+if __name__ == "__main__":
+    sys.exit(main())

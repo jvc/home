@@ -1,0 +1,15 @@
+#!/bin/sh
+
+xmodmap -e "clear mod4" # unmap old Super keys
+xmodmap -e "clear mod1" # unmap old Meta keys
+
+xmodmap -e "keycode 133 = Super_L Super_L" # map Mac Alt to Super
+xmodmap -e "keycode 64 = Meta_L Meta_L" # map Mac Command to Alt
+
+xmodmap -e "keycode 134 = Super_L Super_L" # map Mac Alt to Super
+xmodmap -e "keycode 108 = Meta_R Meta_R" # map Mac Command to Alt
+
+xmodmap -e 'keysym F1 = Super_L'
+
+xmodmap -e "add mod4 = Super_L Super_R"
+xmodmap -e "add mod1 = Meta_L Meta_R"

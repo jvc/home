@@ -1,0 +1,18 @@
+autoload is-at-least
+
+if ! is-at-least 4.3.6; then
+    #print "TODO: zsh 4.2.6 will fail with add-zsh-hook errors"
+    # local contents=$(cat $ZINITDIR/compat/functions/add-zsh-hook)
+    # eval "add-zsh-hook() { $contents }"
+    # autoload add-zsh-hook $ZINITDIR/compat/functions/add-zsh-hook
+fi
+
+if ! is-at-least 4.3.10; then
+    fpath=($fpath $ZINITDIR/compat/functions)
+    autoload add-zsh-hook
+    # $ZINITDIR/compat/functions/add-zsh-hook
+fi
+
+return 0
+
+

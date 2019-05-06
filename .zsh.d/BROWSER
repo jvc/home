@@ -1,0 +1,9 @@
+if [[ -n "$DISPLAY" ]]; then
+    if which iceweasel >/dev/null 2>&1; then
+        BROWSER="iceweasel"
+    else
+        BROWSER="firefox"
+    fi
+else
+    BROWSER="links"
+fi

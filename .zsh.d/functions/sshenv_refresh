@@ -1,0 +1,30 @@
+# Check if the current ssh auth sock is valid, replace it with a
+# working one if it's not.
+sshenv_refresh()
+{
+    # Bail if we don't have an AUTH_SOCK (should not force all shells
+    # to have an sshenv) or if we have a valid one.
+    if [[ -z $SSH_AUTH_SOCK ]] || [[ -S $SSH_AUTH_SOCK ]]; then
+        return 0
+    fi
+
+    local authsym rcfile
+    setopt localoptions globdots extendedglob
+    
+    # The newest is the most reliable, so sort by that to find one as
+    # quickly as possible.
+    for authsym in $HOME/.sshenv.*(@omN); do
+        if [[ -S $authsym && -f $authsym.rc ]]; then
+            print -n "$0: Updating stale environment..."
+            source $authsym.rc
+            print "done"
+
+            return 0
+        else
+            # purge unused session
+            rm -f $authsym $authsym.rc
+        fi
+    done
+    
+    return 1
+}

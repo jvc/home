@@ -1,0 +1,12 @@
+# usage: py2pdf OUTPUTFILE INPUTFILE(s)
+py2pdf ()
+{
+out=$1;
+if [ -f $1 ]; then
+  echo $1 exists, aborting;
+else
+  shift;
+  echo $*;
+  a2ps -A fill -E -2 -C -o - $* | ps2pdf - > $out;
+fi
+}

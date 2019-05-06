@@ -1,0 +1,208 @@
+# Inline aliases
+alias -g PR0N='**/*.{asf,wmv,mpg,avi,mpeg,mov,mp4}(.Oa)'
+alias -g VLM='/var/log/messages'
+alias -g VLS='/var/log/syslog'
+alias -g DN='> /dev/null'        # Dev Null [stdout]
+alias -g DNA='> /dev/null 2>&1'  # Dev Null All
+alias -g DNE='2> /dev/null'      # Dev Null stdError
+alias -g G='| grep -e'
+alias -g GI='| grep -ie'
+alias -g GV='| grep -ve'
+alias -g H='| head'
+alias -g HL='|& head -200'       # head long
+alias -g LD='"$(print *(/om[1]))"' # latest directory
+alias -g LF='$(print *(.om[1]))' # latest file
+alias -g L='| less -R'
+alias -g P='| $PAGER'
+alias -g PN='| perl -ne'
+alias -g PP='| perl -pe'
+alias -g S='| sort'
+alias -g SU='| sort -u'
+alias -g T='| tail'
+alias -g TA='| tee -a'
+alias -g TL='| tail -200'
+alias -g XA0='| xargs -0'
+alias -g XA='| xargs'
+
+# Suffix aliases
+alias -s gz=z$PAGER
+alias -s pdf=evince
+alias -s rar="rar x"
+
+# Traditional aliases
+alias a=gca
+alias ag=ack-grep
+alias agi='ack-grep -i'
+alias aga='ack-grep -a'
+alias ar=acroread
+alias b=$BROWSER
+alias bb=bitbanger
+alias blogstamp='date "+%Y/%m/%d %H:%M:%S"'
+alias boprint='print **/*.{so,o,a,dep,.d}'
+alias bofind=boprint
+alias burniso=wodim
+cal() {
+	if [[ $# -gt 0 ]]; then
+		env cal $*
+	else
+		env cal -3
+	fi
+}
+alias c=clear
+alias cp='nocorrect cp'
+alias dv="dirs -v"
+alias d='dirs -v && print -n "Goto: " && read -k2 dname && cd -$dname'
+alias e=editor
+alias ec=emacsclient
+alias ed="emacs --daemon"
+alias el="editor LF"
+alias ev=evince
+alias gadd="git add"
+alias gaddi="git add -i"
+alias gaddp="git add -p"
+gcf()
+{
+    git commit -m $1 $1
+}
+alias gbr="git branch"
+alias gc="git commit -m"
+alias gcamend="git commit --amend"
+alias gca="git commit -a -m"
+alias gco="git checkout"
+alias gcoo="git checkout --ours"
+alias gcot="git checkout --theirs"
+alias gg='git grep --color=auto'
+alias ggi='git grep -i --color=auto'
+alias gsh="git show --no-prefix"
+alias gcala="gcalcli agenda"
+alias gcalq="gcalcli quick"
+alias gcalw="gcalcli calm"
+alias gl="git log --name-status"
+alias glth="git log --name-status"
+alias gdiff="git diff --no-prefix --relative"
+alias gd=gdiff
+alias gdf="git diff --name-only"
+alias gpull="git pull --rebase"
+alias gpush="git push"
+alias grb="git rebase"
+alias grbi="git rebase -i"
+alias glsm='git ls-files --modified'
+alias glso='git ls-files -o'
+alias glsoi='git ls-files -o -i --exclude-standard'
+alias history='fc -l 1'
+alias h=history
+alias hr="hash -r"
+alias k9="kill -9"
+alias pk=pkill
+alias pof=percentof
+alias ka=killall
+
+# alias ls=...
+case "$OSTYPE" in
+  freebsd*|darwin*)
+    alias ls="ls -trCF -G"
+  ;;
+  linux*)
+    alias ls="ls -trCF --color=auto"
+  ;;
+esac
+alias ll=ls -l
+alias l=locate
+locate_pwd()
+{
+    locate $* | grep "^$PWD/"
+}
+alias lp=locate_pwd
+alias mkdir='nocorrect mkdir'
+alias mkiso="mkisofs -J -R -pad -o"
+alias mp=mplayer
+alias mv='nocorrect mv'
+alias p=ping
+alias pd=popd
+alias phd="ph diff"
+alias phs="ph sync"
+alias pr="post-review"
+alias pu=pushd
+alias pz="print -z"
+alias py=ipython
+#alias resizex="print -z 'xrandr -s 0 && restartxcompmgr'"
+alias xr2='xrandr -s 0' # 2 monitors
+alias xrl='xrandr -s 2' # laptop only
+alias xrx='xrandr -s 1' # external only
+alias rget="wget -r --no-parent -nd -A"
+alias rm='nocorrect rm'
+alias rmd='rmdir'
+alias sc="screen"
+alias scd="screen -d"
+alias scr="screen -r"
+alias scs="screen -S"
+alias scx="screen -x"
+alias srg="surfraw google"
+alias stamp='date "+%Y%m%d_%H%M%S"'
+alias startx="startx -- -dpi 100 >! $HOME/.startx.log 2>&1"
+alias tf="tail -f"
+alias tm="tmux"
+alias tma="tmux attach"
+alias tmd="tmux detach-client"
+alias todec="perl -e 'map { printf \"%d\n\", oct(\$_) } @ARGV'"
+alias tohex="perl -e 'map { printf \"0x%08x\n\", \$_ } @ARGV'"
+alias toudec="perl -e 'map { printf \"%u\n\", oct(\$_) } @ARGV'"
+alias transposewords="perl -p -e 's/(\w+)(\W+)(\w+)/\$3\$2\$1/;'"
+alias ub="sudo updatedb --prune-bind-mounts 1 --add-prunenames \"fakeroot fake-dpi fake-tms .svn .git\""
+alias ule=unlockemacs
+alias vncserver="vncserver -geometry 1280x1024"
+alias svco="svn commit -m"
+alias svc="svn commit -m"
+alias svup="svn update"
+alias svd=svndiff
+alias ad="avidemux2_gtk"
+alias manosshtunnel="ssh -R 65022:mano.jvic.net:22"
+alias jvunfudtunnel='ssh -R 65022:jvic.unfuddle.com:22'
+
+# updatedb for a db in the current directory
+export UBLOCAL_PRUNE=".git .svn .o .so .a .pyc"
+pwupdatedb()
+{
+    updatedb -o mlocate.db \
+        -U $PWD \
+        --prune-bind-mounts 1  \
+        --add-prunenames $UBLOCAL_PRUNE
+}
+
+chvrip()
+{
+    local uuid=$(uuidstr.py)
+    local ddir=$HOME/chv/$uuid
+
+    if [[ -d $dir ]]; then
+        return 1
+    fi
+
+    mkdir -p $ddir
+    
+    touch $ddir/meta
+    editor $ddir/meta
+    print "Meta data:"
+    <$ddir/meta
+    print "Ready to rip. Press play on camcorder, then <CR> to start. (^D aborts)"
+    read -s || exit 1
+    mencoder -profile tv-v4l2 -tv norm=NTSC -endpos 00:31:00 tv:///1 -o $ddir/rip.avi 
+    return 0
+}
+
+# show files that differ
+alias svdf="svn diff | grep Index: | cut -c 8-"
+alias ggtags='git ls-files -z --exclude-standard --no-empty-directory | xargs -0 -n 1 | gtags -f -'
+
+alias mc=mountcrypt
+alias umc=umountcrypt
+
+cscopefiles() {
+        print -C 1 **/*.{c,h,x,s,S}
+}
+cscopebuilddb() {
+        cscope -b -q -k
+}
+cscopebrowse() {
+        cscope -d
+}

@@ -1,0 +1,4 @@
+resume_autossh()
+{
+    autossh -M 20004 -t $1 "screen -ae^Oo -S $WINDOWID -R"
+}

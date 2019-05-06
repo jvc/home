@@ -1,0 +1,48 @@
+!
+! XModmap for a SafeType keyboard, and muchos mousekeys
+!
+
+
+!
+! Add tons of SuperL keys
+!
+! Set 115 to Super_L (SafeType generates Menu?)
+!keysym KP_Insert = Control_L
+!add Control = Control_L
+
+keysym KP_Decimal = Super_R
+add mod4 = Super_R
+
+keysym KP_End = Shift_R
+add Shift = Shift_R
+
+keycode 115 = Super_L
+keysym F1 = Super_L
+add mod4 = Super_L
+
+! Audio keys and extras
+keycode 160 = XF86AudioMute
+keycode 176 = XF86AudioRaiseVolume
+keycode 174 = XF86AudioLowerVolume
+keycode 122 = XF86Search
+keycode 144 = XF86AudioPrev
+keycode 164 = XF86AudioStop
+keycode 162 = XF86AudioPlay
+keycode 153 = XF86AudioNext
+keycode 236 = XF86Mail
+keycode 130 = XF86HomePage
+keycode 129 = XF86MenuPB
+
+! Simulate mouse clicks, I like a lot of options
+keysym KP_Divide = Pointer_Button1
+keysym KP_Multiply = Pointer_Button2
+keysym KP_Subtract = Pointer_Button3
+
+! F1 was turned into a super
+keysym F2 = Pointer_Button1
+keysym F3 = Pointer_Button2
+keysym F4 = Pointer_Button3
+! Leave F5 since it is a good global "refresh" key
+keysym F9 = Pointer_Button1
+keysym F10 = Pointer_Button2
+keysym F11 = Pointer_Button3

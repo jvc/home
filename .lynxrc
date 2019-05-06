@@ -1,0 +1,13 @@
+DEFAULT_USER_MODE:ADVANCED
+EMACS_KEYS_ALWAYS_ON:TRUE
+CASE_SENSITIVE_ALWAYS_ON:TRUE
+DEFAULT_EDITOR:vim
+PRINTER:ljsw:lpr -Pljsw %s:TRUE
+COLOR:0:lightgray:black
+COLOR:1:blue:black
+COLOR:2:yellow:blue
+COLOR:3:green:black
+COLOR:4:magenta:black
+COLOR:5:blue:black
+COLOR:6:red:black
+COLOR:7:magenta:cyan

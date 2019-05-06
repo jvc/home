@@ -1,0 +1,4 @@
+beep()
+{
+    print -n "\a"
+}

@@ -1,0 +1,11 @@
+#cache=32768
+#cache-min=4
+#vf=screenshot
+#vo=gl
+ao=alsa
+threads=4
+# ao=pulse
+#vo=xv
+# vo=x11
+#framedrop=1
+#xineramascreen=1

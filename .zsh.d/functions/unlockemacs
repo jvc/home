@@ -1,0 +1,5 @@
+unlockemacs() {
+    emacsclient -e '(top-level)' &
+    sleep 1
+    kill $!
+}

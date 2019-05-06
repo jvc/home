@@ -1,0 +1,20 @@
+#!/bin/sh
+
+dpkg --get-selections > /var/backups/dpkg-selections
+if [ $? -ne 0 ]
+then
+   error “dpkg selections dump failed”
+else
+   info “dpkg selections dump done”
+fi
+
+aptitude search -F %p ‘~i’ > /var/backups/apt-installed && \
+aptitude search -F %p ‘~i!~M’ > /var/backups/apt-installed-manual && \
+aptitude search -F %p ‘~i ~M’ > /var/backups/apt-installed-auto
+
+if [ $? -ne 0 ]
+then
+   error “installed package list dump failed”
+else
+   info “installed package list dump done”
+fi

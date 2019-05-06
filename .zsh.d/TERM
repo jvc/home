@@ -1,0 +1,18 @@
+# Add or remove support for a 256color termcap depending on what the
+# host supports
+
+term_supported() {
+    [[ -f "/usr/share/terminfo/x/$1" ]] || [[ -f "/lib/terminfo/x/$1" ]]
+}
+
+if [[ $TERM == "xterm-256color" ]]; then
+	term_supported $TERM ]] || TERM=xterm
+elif [[ $TERM == "screen-256color" ]]; then
+	term_supported $TERM || TERM=screen
+elif [[ $TERM == "screen" ]]; then
+    term_supported ${TERM}-256color || TERM=$TERM-256color
+elif [[ $TERM == "xterm" ]]; then
+    term_supported ${TERM}-256color || TERM=$TERM-256color
+fi
+
+return 0

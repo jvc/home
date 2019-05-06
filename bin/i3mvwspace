@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+mvwspace()
+{
+	i3-msg "workspace $1"
+	i3-msg "move workspace to output right"
+
+	# Call again for back-and-forth action
+	# i3-msg "workspace back_and_forth"
+}
+
+if [[ $# -gt 0 ]]; then
+	wsnum=$1
+	mvwspace $wsnum
+else
+	# Move all of them but the first one
+	for wsnum in 2 3 4 5 6 7 8 9; do
+		mvwspace $wsnum
+		sleep 0.2
+	done
+fi

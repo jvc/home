@@ -1,0 +1,16 @@
+#!/bin/zsh
+# gconftool-2  [-?] [-?|--help] [--usage] [-s|--set] [-g|--get] [--set-schema] [-u|--unset]
+# [--recursive-unset] [-a|--all-entries] [--all-dirs] [--dump] [--load=STRING] [-R|--recur-
+# sive-list]    [--dir-exists=STRING]   [--shutdown]   [-p|--ping]   [--spawn]   [-t|--type
+# int|bool|float|string|list|pair] [-T|--get-type]  [--get-list-size]  [--get-list-element]
+# [--list-type=int|bool|float|string]                    [--car-type=int|bool|float|string]
+# [--cdr-type=int|bool|float|string]  [--short-desc=DESCRIPTION]  [--long-desc=DESCRIPTION]
+# [--owner=OWNER]   [--install-schema-file=FILENAME]   [--config-source=SOURCE]  [--direct]
+# [--makefile-install-rule] [--makefile-uninstall-rule]  [--break-key]  [--break-directory]
+# [--short-docs]   [--long-docs]  [--get-schema-name]  [--apply-schema]  [--unapply-schema]
+# [--get-default-source] [-v|--version]
+
+gconftool --type bool --set /desktop/gnome/interface/cursor_blink false
+gconftool --type string --set /desktop/gnome/interface/monospace_font_name "Monospace 9"
+gconftool --type string --set /desktop/gnome/interface/gtk_key_theme Emacs
+

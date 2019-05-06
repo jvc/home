@@ -1,0 +1,28 @@
+function title() {
+    [[ -n $ZNOTITLE ]] && return
+
+    local pfx cmd
+
+    pfx=$1
+    shift
+
+    cmd=${(V)@//\%/\%\%}
+    cmd=$(print -Pn "%40>...>$cmd" | tr -d "\n")
+
+    case $TERM in
+        # screen*)
+        #     print -Pn "\e]2;$pfx $cmd\a" # plain xterm title
+        #     if [[ -n $STY ]]; then
+        #         # GNU Screen
+        #         print -Pn "\ek$cmd\e\\"    # screen title (in ^A")
+        #         print -Pn "\e_$pfx   \e\\"  # screen location
+        #     fi
+        #     ;;
+        xterm*)
+            print -Pn "\e]2;$pfx $cmd\a" # plain xterm title
+            ;;
+        (*)
+            export ZNOTITLE=1
+            ;;
+    esac
+}

@@ -1,0 +1,13 @@
+pdf2text()
+{
+    local fname
+    local newfname
+
+    if [[ $# -ne 1 ]]; then
+        print "Usage: pdf2txt <file>"
+    else
+        fname=$1
+	newfname=${fname%.pdf}.txt
+	pdftotext -layout $fname $newfname
+    fi
+}

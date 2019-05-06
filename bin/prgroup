@@ -1,0 +1,204 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import re
+import time
+import select
+import subprocess
+
+
+allowed = re.compile('(.*)\.(asf|wmv|mpg|avi|mpeg|mov|mp4)$');
+
+## {{{ http://code.activestate.com/recipes/542195/ (r1)
+class MPlayer(object):
+    """ A class to access a slave mplayer process
+    you may want to use command(name, args*) directly
+    or call populate() to access functions (and minimal doc).
+
+    Exemples:
+        mp.command('loadfile', '/desktop/funny.mp3')
+        mp.command('pause')
+        mp.command('quit')
+
+    Note:
+        After a .populate() call, you can access an higher level interface:
+            mp.loadfile('/desktop/funny.mp3')
+            mp.pause()
+            mp.quit()
+
+        Beyond syntax, advantages are:
+            - completion
+            - minimal documentation
+            - minimal return type parsing
+    """
+
+    exe_name = 'mplayer' if os.sep == '/' else 'mplayer.exe'
+
+    def __init__(self):
+        self._mplayer = subprocess.Popen(
+                [self.exe_name, '-fs', '-slave', '-quiet', '-idle'],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE, bufsize=1)
+        self._readlines()
+
+    def _readlines(self):
+        ret = []
+        while any(select.select([self._mplayer.stdout.fileno()], [], [], 0.6)):
+            ret.append( self._mplayer.stdout.readline() )
+        return ret
+
+    def poll(self):
+        return self._mplayer.poll()
+        
+    def command(self, name, *args):
+        """ Very basic interface [see populate()]
+        Sends command 'name' to process, with given args
+        """
+        cmd = '%s%s%s\n'%(name,
+                ' ' if args else '',
+                ' '.join(repr(a) for a in args)
+                )
+
+        if self.poll() is not None:
+            return
+            
+        self._mplayer.stdin.write(cmd)
+        if name == 'quit':
+            return
+        return self._readlines()
+
+    @classmethod
+    def populate(kls):
+        """ Populates this class by introspecting mplayer executable """
+        mplayer = subprocess.Popen([kls.exe_name, '-input', 'cmdlist'],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+        def args_pprint(txt):
+            lc = txt.lower()
+            if lc[0] == '[':
+                return '%s=None'%lc[1:-1]
+            return lc
+
+        while True:
+            line = mplayer.stdout.readline()
+            if not line:
+                break
+            if line[0].isupper():
+                continue
+            args = line.split()
+            cmd_name = args.pop(0)
+            arguments = ', '.join([args_pprint(a) for a in args])
+            func_str = '''def _populated_fn(self, *args):
+            """%(doc)s"""
+            if not (%(minargc)d <= len(args) <= %(argc)d):
+                raise TypeError('%(name)s takes %(argc)d arguments (%%d given)'%%len(args))
+            ret = self.command('%(name)s', *args)
+            if not ret:
+                return None
+            if ret[0].startswith('ANS'):
+                val = ret[0].split('=', 1)[1].rstrip()
+                try:
+                    return eval(val)
+                except:
+                    return val
+            return ret'''%dict(
+                    doc = '%s(%s)'%(cmd_name, arguments),
+                    minargc = len([a for a in args if a[0] != '[']),
+                    argc = len(args),
+                    name = cmd_name,
+                    )
+            exec(func_str)
+
+            setattr(MPlayer, cmd_name, _populated_fn)
+
+## end of http://code.activestate.com/recipes/542195/ }}}
+
+def add_dir(byt, top):
+    for root, dirs, files in os.walk(top, topdown=True):
+        if re.search(r'/Sample', root):
+            continue
+        
+        #print root, len(files)
+        for fname in files:
+            match = allowed.search(fname)
+            if match:
+                fullpath = os.path.join(root, fname)
+
+                # determine title...
+                
+                # start by dropping the extension
+                (title, ext) = match.groups()
+
+                
+                # use the relative path
+                title = os.path.join(root[len(top) + 1:], title)
+
+                # combine CDs
+                title = re.sub(r'CD\d/?', r'/', title)
+
+                # strip trailing numbers for split scenes
+                #title = re.sub(r'[\.-_ ]\d\d?$', '', title)
+
+                title = re.sub(r'\d', '', title)
+                
+                if byt.has_key(title):
+                    byt[title].append(fullpath)
+                else:
+                    byt[title] =  [fullpath]
+                    
+                # join each file in dir
+                # every dir with files in it
+                #if allowed = re.compile('(.*)\.(asf|wmv|mpg|avi|mpeg|mov|mp4)$');
+
+                
+                
+    
+def main():
+    byt = {}
+    for dname in sys.argv[1:]:
+        add_dir(byt, dname)
+
+    # list_dirs(byt)
+
+    titles = byt.keys()
+    # titles.sort()
+    import random
+    random.shuffle(titles)
+        
+    MPlayer.populate()
+    try:
+        mp = MPlayer()
+        # import readline
+        # readline.parse_and_bind('tab: complete')
+        # import rlcompleter
+        # for title in titles:
+        #     print "%s: %d" % (title, len(byt[title]))
+        #print "mplayer -fs %s: %s" % (title, " ".join(byt[title]))
+        for title in titles:
+            for path in byt[title]:
+                print "load file %s" % path
+                print mp.loadfile(path)
+                while True:
+                    print "in loop"
+                    time.sleep(0.2)
+                    status = mp.poll()
+                    print status
+                    if status is not None:
+                        break
+                    if mp.get_time_pos() is None:
+                        break
+                    #print mp.get_time_length()
+                    
+            print "out of floop"
+        
+        # raw_input('Run this with python -i to get interactive shell.'
+        #         '\nPress any key to quit.')
+    finally:
+        mp.quit()
+
+    return 0
+    
+
+if __name__ == '__main__':
+    main()
+        

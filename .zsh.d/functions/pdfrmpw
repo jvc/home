@@ -1,0 +1,17 @@
+pdfrmpw() {
+	local fname
+	local password
+
+	if [[ $# -lt 2 ]]; then
+		print "Usage: pdfrmpw <password> <file> [files...]"
+		return 1
+	fi
+
+	password=$1
+	shift
+
+	for fname in $*; do
+		qpdf --password=$password --decrypt $fname out.pdf &&
+			mv out.pdf $fname
+	done
+}

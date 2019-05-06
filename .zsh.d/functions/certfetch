@@ -1,0 +1,6 @@
+certfetch() 
+{
+    local site
+    site=$1
+    print QUIT | openssl s_client -connect $site:443 | sed -ne '/BEGIN CERT/,/END CERT/p' >! $site.crt
+}

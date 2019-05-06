@@ -1,0 +1,9 @@
+prompt_jvc_setup () {
+    if [[ "$TERM" != "dumb" ]]; then
+        PROMPT='%(?..[%{$fg_bold[white]%}%?%{$reset_color%}] )%{$fg_bold[white]%}%m%{$reset_color%}:%{$fg[cyan]%}%~%{$reset_color%}%#%{$reset_color%} '
+        #RPROMPT='$(prompt_jvc_rprompt)'
+    else
+        PROMPT="%(?..[%?] )%n@%m:%# "
+    fi
+    prompt_opts=(cr percent subst)
+}

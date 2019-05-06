@@ -1,0 +1,8 @@
+svndiff()
+{
+    if [[ -d ".git" ]]; then
+        git diff $* | git2svn.py | colordiff | less -R
+    else
+        svn diff $* | colordiff | less -R
+    fi
+}

@@ -1,0 +1,18 @@
+alias pmss='sudo pacman -Ss'    # string Search string in the package DB
+
+
+alias pmsn='sudo pacman -S --needed'     # <package-name> Installs package
+alias pmsyu='sudo pacman -Syu'   # Updates the system
+
+alias pmr='sudo pacman -R'     # <package-name> Removes package
+alias pmrns='sudo pacman -Rns'   # <package-name> Removes package, deps, and config file
+
+alias pmq='sudo pacman -Q'     # <package-name> Search the package in system
+alias pmql='sudo pacman -Ql'   # <package-name>  # List files whithin the package
+alias pmqe='sudo pacman -Qe'   # List explicit installed packages
+
+## note: pkgfile is good for finding which package can provide a file
+
+alias aurl='sudo pacman -Qm'   # List AUR packages
+alias aurdep='sudo makepkg -s' # Auto install deps for AUR packages
+

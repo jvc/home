@@ -1,0 +1,67 @@
+scancheck()
+{
+    local opt name side flname width height args dev
+
+    if [[ -z $SCANNER ]]; then
+        dev=$(scanimage -f "%d%n" | grep hp3900)
+        if [[ $? -eq 0 ]]; then
+            export SCANNER=$dev
+        else
+            print "Error: Unable to find scanner"
+            return 1
+        fi
+    fi
+
+    # size of a personal check
+    width=162
+    height=70
+
+    while getopts "bp" opt; do
+        case $opt in
+            (b) # big checks are 215 93
+            width=215
+            height=93
+            ;;
+            (*)
+            return 1
+            ;;
+        esac
+    done
+    (( OPTIND > 1 )) && shift $(( OPTIND - 1 ))
+
+    args=(-x $width -y $height)
+
+    name=$1
+    if [[ -z $name ]]; then
+        print "Usage: $0 [-b] NAME"
+        return 1
+    fi
+
+    for side in front back; do
+        print -n "Place $side side of check face down in scanner. "
+        print "Press <CR> when ready or ^D to abort."
+        read -s || exit 1
+
+        print -n "Scanning $side of check..."
+        flname=${name}_${side}.png
+        scanimage -d $SCANNER --mode Gray --resolution 200 --format=png \
+            $args >! $flname
+
+        if [[ -s $flname ]]; then
+            print -n "Done. Autocolor..."
+            autocolor $flname >/dev/null
+        else
+            rm -f $flname
+            print "Scan failed"
+            return 1
+        fi
+    done
+
+    print "Done."
+    beep
+
+    # Now we just need to HTTPS POST to your bank's web server to
+    # submit the deposit! Oh wait, that's actually not going to work
+    # with the shit Java applet they use!
+    return 0
+}

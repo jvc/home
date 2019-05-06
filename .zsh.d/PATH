@@ -1,0 +1,25 @@
+# Set the path
+# -a array, -U unique
+typeset -aU path
+typeset -x PATH
+path=(
+    $HOME/bin(/)
+    $HOME/.local/bin(/)
+    $HOME/src/android-sdk-linux_x86/tools(/)
+    $HOME/src/android-sdk-linux_x86/platform-tools(/)
+    $HOME/local/sbin(/)
+    $HOME/local/bin(/)
+    $HOME/local/usr/sbin(/)
+    $HOME/local/usr/bin(/)
+    /usr/lib/perl5/core_perl/bin(/)
+    /opt/*/sbin(/)
+    /opt/*/bin(/)
+    /usr/*/sbin(/)
+    /usr/*/bin(/)
+    /sbin
+    /bin
+    /usr/sbin
+    /usr/bin
+    /usr/X11R6/bin(/)
+    /usr/games(/)
+    ) 2>/dev/null

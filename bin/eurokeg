@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+def main():
+    ounces_per_gal = 128
+    keg_liters = 50
+    sales_tax = 1.06
+    keg_cost = 189.0 * sales_tax
+    liters_to_gals = 0.264172052637296
+    glass_oz = 16.0
+    total_oz = keg_liters * liters_to_gals * ounces_per_gal
+    print "Total %doz beers: %d" % (glass_oz, total_oz / glass_oz)
+    print "Cost per beer: %1.3f" % (keg_cost / (total_oz / glass_oz))
+
+
+
+if __name__ == '__main__':
+    main()

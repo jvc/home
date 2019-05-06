@@ -1,0 +1,4 @@
+chpwd_savedirstack()
+{
+    dirs -pl >! ~/.zdirs
+}
