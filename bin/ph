@@ -44,38 +44,46 @@ EOF
 
 ph_add()
 {
+    local cfile
     local file
-    local relative_dir
     local file_tail
+    local relative_dir
     local repo_dir
 
     for file in $*; do
-        file_tail=${file:t}
         repo_dir="$PH_REPO/"
+        # canonicalize then remove ^$HOME/ so we're left with the relative path
+        # to the file from $HOME.
+        cfile=$(readlink -e $file)
+        file=${cfile#$HOME/}
+        file_tail=${file:t}
         if [[ ${file:h} != "." ]]; then
-            relative_dir="${file:h}/"
+            relative_dir="${file:h}"
             repo_dir="$PH_REPO/$relative_dir"
-            mkdir -p $repo_dir
+            mkdir -vp $repo_dir
         fi
-        mv $file $repo_dir
-        ( cd $PH_REPO ; git add $relative_dir$file_tail )
-        ln -vfs $repo_dir$file_tail $HOME/$file
+        print mv -v $file $repo_dir
+        ( cd $PH_REPO ; git add $relative_dir/$file_tail )
+        ln -vfs $repo_dir/$file_tail $HOME/$file
     done
 }
 
 ph_rm()
 {
+    local cfile
     local file
     local relative_dir
     local file_tail
 
     for file in $*; do
+        cfile=$(readlink -e $file)
+        file=${cfile#$HOME/}
         file_tail=${file:t}
         if [[ ${file:h} != "." ]]; then
-            relative_dir="${file:h}/"
+            relative_dir="${file:h}"
         fi
-        ( cd $PH_REPO ; git rm $relative_dir$file_tail )
-        rm -f $HOME/$file
+        ( cd $PH_REPO ; git rm $relative_dir/$file_tail )
+        rm -vf $HOME/$file
     done
 }
 
