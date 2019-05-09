@@ -75,10 +75,12 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 set complete=.,w,k
 
-" Use pathogen to automatically load modules in ~/vim/bundle
-" https://github.com/tpope/vim-pathogen
-call pathogen#infect()
-"call pathogen#helptags()
+if ! has('nvim')
+	" Use pathogen to automatically load modules in ~/vim/bundle
+	" https://github.com/tpope/vim-pathogen
+	call pathogen#infect()
+	"call pathogen#helptags()
+endif
 
 " Enable ftplugin
 " http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
@@ -155,8 +157,12 @@ highlight LongLine ctermbg=red guibg=red
 if ! exists('g:colors_set') || ! g:colors_set
 	let g:colors_set = 1
 	set background=dark
-	let g:solarized_termcolors=256
-	colorscheme solarized
+	if ! has('nvim')
+		let g:solarized_termcolors=256
+		colorscheme solarized
+	else
+		colorscheme solarized8
+	endif
 endif
 
 match ExtraWhitespace /\(\s\+$\| \+\t\)/
