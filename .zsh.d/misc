@@ -85,6 +85,7 @@ alias gdf="git diff --name-only"
 alias gpull="git pull --rebase"
 alias gpush="git push"
 alias grb="git rebase"
+alias grbc="git rebase --continue"
 alias grbi="git rebase -i"
 alias glsm='git ls-files --modified'
 alias glso='git ls-files -o'
