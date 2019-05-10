@@ -80,6 +80,10 @@ if ! has('nvim')
 	" https://github.com/tpope/vim-pathogen
 	call pathogen#infect()
 	"call pathogen#helptags()
+else
+call plug#begin()
+	Plug '~/src/fzf'
+call plug#end()
 endif
 
 " Enable ftplugin
