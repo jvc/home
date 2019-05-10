@@ -62,9 +62,9 @@ ph_add()
             repo_dir="$PH_REPO/$relative_dir"
             mkdir -vp $repo_dir
         fi
-        print mv -v $file $repo_dir
-        ( cd $PH_REPO ; git add $relative_dir/$file_tail )
-        ln -vfs $repo_dir/$file_tail $HOME/$file
+        mv -v $file $repo_dir &&
+		( cd $PH_REPO ; git add $relative_dir/$file_tail ) &&
+		ln -vfs $repo_dir/$file_tail $HOME/$file
     done
 }
 
