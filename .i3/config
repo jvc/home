@@ -27,8 +27,8 @@ set $mod Mod4
 font pango:DejaVu Sans Mono 9
 
 
-#gaps inner 10
-#gaps outer 5
+gaps inner 24
+gaps outer 8
 
 #set $mode_gaps Gaps: (o) outer, (i) inner
 #set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -68,7 +68,7 @@ font pango:DejaVu Sans Mono 9
 #}
 
 #smart_borders on
-#for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 
 
 
