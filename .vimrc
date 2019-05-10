@@ -75,6 +75,11 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 set complete=.,w,k
 
+" Enable ftplugin
+" http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
+filetype plugin indent on
+
+
 if ! has('nvim')
 	" Use pathogen to automatically load modules in ~/vim/bundle
 	" https://github.com/tpope/vim-pathogen
@@ -82,17 +87,32 @@ if ! has('nvim')
 	"call pathogen#helptags()
 else
 call plug#begin()
-	Plug '~/src/fzf'
+	Plug 'ctrlpvim/ctrlp.vim'
+	Plug 'ervandew/supertab'
+	Plug 'vim-scripts/YankRing.vim'
+	Plug 'tpope/vim-fugitive'
+	Plug 'vim-syntastic/syntastic'
+
+	" Completion
+	" Plug 'roxma/nvim-yarp'
+	" Plug 'ncm2/ncm2'
+	" Plug 'ncm2/ncm2-bufword'
+	" Plug 'ncm2/ncm2-tmux'
+	" Plug 'ncm2/ncm2-path'
+	" Plug 'ncm2/ncm2-jedi'
+	" Plug 'ncm2/ncm2-pyclang'
 call plug#end()
 endif
 
-" Enable ftplugin
-" http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
-filetype plugin indent on
-
+" Completion
 " Enable omnicomplete
 " http://vim.wikia.com/wiki/Omni_completion
 set ofu=syntaxcomplete#Complete
+
+" ncm2
+"let g:ncm2#matcher = 'substrfuzzy'
+"set completeopt=noinsert,menuone,noselect
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " Enable Syntax highlighting
 syntax on
@@ -197,14 +217,14 @@ let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
 
 let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files'],
-      \ 2: ['.svn', 'svn ls -R'],
-      \ 3: ['.hg', 'hg --cwd %s locate -I .'],
-      \ },
-    \ 'fallback': 'find %s -type f',
-    \ 'ignore': 0
-    \ }
+			\ 'types': {
+			\ 1: ['.git', 'cd %s && git ls-files'],
+			\ 2: ['.svn', 'svn ls -R'],
+			\ 3: ['.hg', 'hg --cwd %s locate -I .'],
+			\ },
+			\ 'fallback': 'find %s -type f',
+			\ 'ignore': 0
+			\ }
 
 
 " GVIM
