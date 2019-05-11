@@ -1,7 +1,5 @@
 # Set the path
-# -a array, -U unique
-typeset -aU path
-typeset -x PATH
+typeset -xaU path
 path=(
     $HOME/bin(/)
     $HOME/.local/bin(/)
