@@ -225,9 +225,3 @@ let g:ctrlp_user_command = {
 			\ 'fallback': 'find %s -type f',
 			\ 'ignore': 0
 			\ }
-
-
-" GVIM
-set guioptions-=T
-set guioptions-=r
-set guicursor=a:blinkon0
