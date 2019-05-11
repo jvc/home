@@ -92,6 +92,7 @@ call plug#begin()
 	Plug 'vim-scripts/YankRing.vim'
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-syntastic/syntastic'
+	Plug 'davidhalter/jedi-vim'
 
 	" Completion
 	" Plug 'roxma/nvim-yarp'
