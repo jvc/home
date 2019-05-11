@@ -51,6 +51,9 @@ map gQ <Nop>
 " Use the other ex-mode binding to fill paragraph
 map Q gwap
 
+" Setup a search and replace from here to end-of-buffer
+map <m-r> :.,$///gc<Left><Left><Left><Left>
+
 " Window switch while still in interactive mode
 imap <C-W><C-W> <Esc><C-W><C-W>
 
@@ -192,8 +195,6 @@ endif
 
 match ExtraWhitespace /\(\s\+$\| \+\t\)/
 autocmd BufWinEnter * highlight link ExtraWhitespace SpellBad
-
-map <m-r> :.,$///gc<Left><Left><Left><Left>
 
 " Ctrl-P plugin config
 " https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
