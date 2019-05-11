@@ -191,7 +191,7 @@ if ! exists('g:colors_set') || ! g:colors_set
 endif
 
 match ExtraWhitespace /\(\s\+$\| \+\t\)/
-autocmd BufWinEnter * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * highlight link ExtraWhitespace SpellBad
 
 map <m-r> :.,$///gc<Left><Left><Left><Left>
 
