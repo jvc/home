@@ -222,5 +222,6 @@ bindcode 122 exec amixer set Master 1%- unmute -q
 bindcode 123 exec amixer set Master 1%+ unmute -q
 
 bar {
-        status_command i3status
+	status_command i3status
+	font pango:DejaVu Sans 10
 }
