@@ -34,7 +34,7 @@ set wildmode=longest,list,full
 nnoremap <F5> :set invpaste paste?<Enter>
 imap <F5> <C-O><F5>
 set pastetoggle=<F5>
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 nnoremap <F6> "=strftime("%c")<CR>P
 inoremap <F6> <C-R>=strftime("%c")<CR>
