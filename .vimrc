@@ -103,6 +103,8 @@ call plug#begin()
 	Plug 'vim-syntastic/syntastic'
 	Plug 'davidhalter/jedi-vim'
 	Plug 'majutsushi/tagbar'
+	Plug 'chrisbra/csv.vim'
+	Plug 'mboughaba/i3config.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
