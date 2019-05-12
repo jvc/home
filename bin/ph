@@ -51,19 +51,19 @@ ph_add()
     local repo_dir
 
     for file in $*; do
-        repo_dir="$PH_REPO/"
+        repo_dir="$PH_REPO"
         # canonicalize then remove ^$HOME/ so we're left with the relative path
         # to the file from $HOME.
         cfile=$(readlink -e $file)
         file=${cfile#$HOME/}
         file_tail=${file:t}
         if [[ ${file:h} != "." ]]; then
-            relative_dir="${file:h}"
+            relative_dir="${file:h}/"
             repo_dir="$PH_REPO/$relative_dir"
             mkdir -vp $repo_dir
         fi
         mv -v $cfile $repo_dir &&
-		( cd $PH_REPO ; git add $relative_dir/$file_tail ) &&
+		( cd $PH_REPO ; git add $relative_dir$file_tail ) &&
 		ln -vfs $repo_dir/$file_tail $HOME/$file
     done
 }
@@ -80,9 +80,9 @@ ph_rm()
         file=${cfile#$HOME/}
         file_tail=${file:t}
         if [[ ${file:h} != "." ]]; then
-            relative_dir="${file:h}"
+            relative_dir="${file:h}/"
         fi
-        ( cd $PH_REPO ; git rm $relative_dir/$file_tail )
+        ( cd $PH_REPO ; git rm $relative_dir$file_tail )
         rm -vf $HOME/$file
     done
 }
