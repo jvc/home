@@ -4,14 +4,14 @@ export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD ||
 
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/jchouinard/src/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/jchouinard/src/fzf/bin"
+if [[ ! "$PATH" == *$HOME/src/fzf/bin* ]]; then
+  path+="$HOME/src/fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/home/jchouinard/src/fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME/src/fzf/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/home/jchouinard/src/fzf/shell/key-bindings.zsh"
+source "$HOME/src/fzf/shell/key-bindings.zsh"
