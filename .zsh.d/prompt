@@ -6,7 +6,11 @@
 # zstyle ':vcs_info:*' enable git
 #zstyle ':vcs_info:*' enable svn
 
-# Prompt
-autoload -Uz promptinit
-promptinit
-prompt jvc
+powerline_root=~/.local/lib/python3.5/site-packages/powerline
+if [[ -d $powerline_root ]]; then
+    . $powerline_root/bindings/zsh/powerline.zsh
+else
+    autoload -Uz promptinit
+    promptinit
+    prompt jvc
+fi
