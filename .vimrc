@@ -189,10 +189,6 @@ set directory+=~/.vim/swap//
 set directory+=~/tmp//
 set directory+=.
 
-" Colors
-highlight ExtraWhitespace ctermbg=red guibg=red
-highlight LongLine ctermbg=red guibg=red
-
 if ! exists('g:colors_set') || ! g:colors_set
 	let g:colors_set = 1
 	set background=dark
@@ -204,6 +200,8 @@ if ! exists('g:colors_set') || ! g:colors_set
 	endif
 endif
 
+highlight link LongLine SpellBad
+highlight link ExtraWhitespace SpellBad
 match ExtraWhitespace /\(\s\+$\| \+\t\)/
 autocmd BufWinEnter * highlight link ExtraWhitespace SpellBad
 
