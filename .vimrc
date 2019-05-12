@@ -102,6 +102,7 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-syntastic/syntastic'
 	Plug 'davidhalter/jedi-vim'
+	Plug 'majutsushi/tagbar'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
