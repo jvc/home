@@ -3,7 +3,7 @@ autoload -U colors
 colors
 
 # setup LS_COLORS
-eval "`dircolors -b`"
+eval $(dircolors $HOME/.dircolors)
 
 # A script to make using 256 colors in zsh less painful.
 # P.C. Shyamshankar <sykora@lucentbeing.com>
