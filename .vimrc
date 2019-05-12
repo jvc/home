@@ -82,6 +82,12 @@ set complete=.,w,k
 " http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
 filetype plugin indent on
 
+" Display all buffers when online one tab opened
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dracula'
+let g:airline_theme='base16_solarized'
+let g:airline_powerline_fonts = 1
+let g:airline_solarized_bg='dark'
 
 if ! has('nvim')
 	" Use pathogen to automatically load modules in ~/vim/bundle
@@ -96,6 +102,8 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-syntastic/syntastic'
 	Plug 'davidhalter/jedi-vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
 
 	" Completion
 	" Plug 'roxma/nvim-yarp'
