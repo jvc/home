@@ -100,6 +100,7 @@ call plug#begin()
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'ervandew/supertab'
 	Plug 'vim-scripts/YankRing.vim'
+	Plug 'easymotion/vim-easymotion'
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-syntastic/syntastic'
 	Plug 'davidhalter/jedi-vim'
