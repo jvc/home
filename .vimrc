@@ -108,6 +108,7 @@ call plug#begin()
 	Plug 'majutsushi/tagbar'
 	Plug 'chrisbra/csv.vim'
 	Plug 'mboughaba/i3config.vim'
+	Plug 'Vimjas/vim-python-pep8-indent'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
