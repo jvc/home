@@ -52,7 +52,8 @@ URxvt*underLine:       False
 URxvt*visualBell:      False
 
 URxvt.matcher.button:  1
-URxvt.perl-ext-common: default,selection,clipboard,searchable-scrollback<Control-Shift-R>
+URxvt.perl-ext-common: default,selection,selection-to-clipboard,searchable-scrollback<Control-Shift-R>
+URxvt.clipboard.autocopy: true
 URxvt*charClass:       0-32:1,33-126:2,127-160:3,161-255:2
 URxvt.urgentOnBell:    True
 URxvt.urlLauncher:     firefox
@@ -62,8 +63,7 @@ URxvt.keysym.F4: OS
 URxvt.keysym.F7: ~.
 URxvt.keysym.F8: ~~.
 URxvt.keysym.F9: ~~~.
-URxvt.keysym.C-S-V: perl:clipboard:paste
-URxvt.keysym.C-S-B: perl:clipboard:slowpaste
+URxvt.keysym.C-S-V: eval:paste_clipboard
 URxvt*geometry:        80x35
 URxvt.meta8: False
 !Urxvt*internalBorder:     5
