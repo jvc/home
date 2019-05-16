@@ -68,7 +68,7 @@ gaps outer 8
 #}
 
 #smart_borders on
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 
 
 
