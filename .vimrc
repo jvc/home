@@ -85,17 +85,11 @@ filetype plugin indent on
 
 " Display all buffers when online one tab opened
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='dracula'
 let g:airline_theme='base16_solarized'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
 
-if ! has('nvim')
-	" Use pathogen to automatically load modules in ~/vim/bundle
-	" https://github.com/tpope/vim-pathogen
-	call pathogen#infect()
-	"call pathogen#helptags()
-else
+if has('nvim')
 call plug#begin()
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'ervandew/supertab'
@@ -111,15 +105,6 @@ call plug#begin()
 	Plug 'Vimjas/vim-python-pep8-indent'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-
-	" Completion
-	" Plug 'roxma/nvim-yarp'
-	" Plug 'ncm2/ncm2'
-	" Plug 'ncm2/ncm2-bufword'
-	" Plug 'ncm2/ncm2-tmux'
-	" Plug 'ncm2/ncm2-path'
-	" Plug 'ncm2/ncm2-jedi'
-	" Plug 'ncm2/ncm2-pyclang'
 call plug#end()
 endif
 
