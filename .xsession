@@ -20,9 +20,10 @@ xset m 4/1 4 &
 dunst &
 wicd-gtk --tray &
 udiskie -s &
-# ssh-add &
 
 clipit &
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
+
+ssh-add &
 
 exec i3
