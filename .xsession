@@ -17,12 +17,9 @@ xset s off &
 xset dpms 0 0 600 &
 xset m 4/1 4 &
 
-eval `gnome-keyring-daemon --daemonize --start`
-
-#wicd-gtk --tray &
+dunst &
+wicd-gtk --tray &
 udiskie -s &
-nm-applet &
-# thunar --daemon &
 # ssh-add &
 
 clipit &
