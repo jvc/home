@@ -65,6 +65,9 @@ imap <C-W>h <Esc><C-W><C-W>s
 " Close the current buffer without removing the window
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
 
+map <leader>b :bnext<CR>
+map <leader>B :bprev<CR>
+
 " Folding
 inoremap <F9> <C-O>za
 nnoremap <F9> za
