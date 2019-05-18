@@ -38,6 +38,10 @@ usage()
        List the current files and link status. This is like an 'install'
        dry-run and can be piped to zsh to act like 'install'.
 
+    clean
+        Recurse in home directory and find broken symlinks to $PH_REPO.
+
+
 EOF
     exit 1
 }
@@ -135,6 +139,28 @@ ph_show ()
             print "# link already exists for $PWD/$file"
         else
             print "ln -vfs $PWD/$file $HOME/$file"
+        fi
+    done
+    popd
+}
+
+ph_clean()
+{
+    local file
+    local dir
+    local dest
+
+    setopt localoptions globdots extendedglob
+    pushd $PH_REPO
+
+    # Symlink every file to home dir
+    for file in $(find $HOME -xtype l 2>/dev/null); do
+        # determine target of file
+        dest=$(readlink $file)
+
+        # If it links into the home repository remove it
+        if [[ $dest == $PH_REPO* ]]; then
+            print "rm -f \"$file\""
         fi
     done
     popd
