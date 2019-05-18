@@ -18,8 +18,8 @@ local _fpath="$ZINITDIR/functions"
 fpath=($fpath $_fpath)
 autoload -U $_fpath/*(:t)
 
-export EDITOR='vim'
-export ALTERNATE_EDITOR='vi'
+export EDITOR='nvim'
+export ALTERNATE_EDITOR='vim'
 
 if [[ -d $HOME/local/lib ]]; then
     export LD_LIBRARY_PATH=$HOME/local/lib
