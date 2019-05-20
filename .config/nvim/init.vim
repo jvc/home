@@ -145,9 +145,10 @@ filetype plugin indent on
 "
 " Hooks based on file patterns
 "
-"
+
 " Auto reload vimrc when editing it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! BufWritePost init.vim source $XDG_CONFIG_HOME/nvim/init.vim
+autocmd! BufWritePost plugin.vim source $XDG_CONFIG_HOME/nvim/plugin.vim
 
 " Set file types
 autocmd BufNewFile,BufRead *.zsh.d/* setlocal filetype=zsh
