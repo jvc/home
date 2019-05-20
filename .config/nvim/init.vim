@@ -80,17 +80,14 @@ set complete=.,w,k
 " Enable omnicomplete
 " http://vim.wikia.com/wiki/Omni_completion
 set ofu=syntaxcomplete#Complete
-
-" Enable Syntax highlighting
-syntax on
-
 " TAGS
 set tags=./tags;
 set nocst
 
 
-nnoremap <F6> "=strftime("%c")<CR>P
-inoremap <F6> <C-R>=strftime("%c")<CR>
+"
+" Key bindings
+"
 
 " Disable an enter ex-mode binding
 map gQ <Nop>
@@ -114,12 +111,8 @@ map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 map <leader>n :bnext<CR>
 map <leader>p :bprev<CR>
 
-" Folding
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
-
+" Balance windows upon resize
+autocmd VimResized * wincmd =
 
 "
 " Colors
@@ -139,6 +132,9 @@ highlight link LongLine SpellBad
 highlight link ExtraWhitespace SpellBad
 match ExtraWhitespace /\(\s\+$\| \+\t\)/
 autocmd BufWinEnter * highlight link ExtraWhitespace SpellBad
+
+" Enable Syntax highlighting
+syntax on
 
 " Enable ftplugin
 " http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
