@@ -27,8 +27,7 @@ if !has('nvim')
     silent !mkdir -p "$XDG_DATA_HOME/nvim/backup"
     silent !mkdir -p "$XDG_DATA_HOME/nvim/shada"
 
-    set directory=/$XDG_DATA_HOME/nvim/swap
-    set backupdir=.,$XDG_DATA_HOME/nvim/backup
+    set directory=$XDG_DATA_HOME/nvim/swap
     set viminfo+=n$XDG_DATA_HOME/nvim/shada/viminfo
 
     " Wildmenu for command line completion
@@ -43,6 +42,8 @@ endif
 
 
 set backspace=2		" allow backspacing over everything in insert mode
+set backup
+set backupdir=$XDG_DATA_HOME/nvim/backup
 set autoindent		" always set autoindenting on
 "set autoread
 set history=1000	" 1000 lines of command line history
