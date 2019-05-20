@@ -119,14 +119,14 @@ autocmd VimResized * wincmd =
 " Colors
 "
 if ! exists('g:colors_set') || ! g:colors_set
-	let g:colors_set = 1
-	set background=dark
-	if !has('nvim')
-		let g:solarized_termcolors=256
-		colorscheme solarized
-	else
-		colorscheme solarized8
-	endif
+    let g:colors_set = 1
+    set background=dark
+    if !has('nvim')
+        let g:solarized_termcolors=256
+        colorscheme solarized
+    else
+        colorscheme solarized8
+    endif
 endif
 
 highlight link LongLine SpellBad

@@ -87,11 +87,11 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
 let g:ctrlp_user_command = {
-			\ 'types': {
-			\ 1: ['.git', 'cd %s && git ls-files'],
-			\ 2: ['.svn', 'svn ls -R'],
-			\ 3: ['.hg', 'hg --cwd %s locate -I .'],
-			\ },
-			\ 'fallback': 'find %s -type f',
-			\ 'ignore': 0
-			\ }
+    \     'types': {
+    \         1: ['.git', 'cd %s && git ls-files'],
+    \         2: ['.svn', 'svn ls -R'],
+    \         3: ['.hg', 'hg --cwd %s locate -I .'],
+    \     },
+    \ 'fallback': 'find %s -type f',
+    \ 'ignore': 0
+    \ }
