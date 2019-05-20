@@ -108,10 +108,12 @@ map <C-W>h <C-W>s
 imap <C-W>h <Esc><C-W><C-W>s
 
 " Close the current buffer without removing the window
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+map <A-c> :bp<bar>sp<bar>bn<bar>bd<CR>
+map <A-Right> :bnext<CR>
+map <A-Left> :bprev<CR>
 
-map <leader>n :bnext<CR>
-map <leader>p :bprev<CR>
+"map <leader>b :bnext<CR>
+"map <leader>p :bprev<CR>
 
 " Balance windows upon resize
 autocmd VimResized * wincmd =
