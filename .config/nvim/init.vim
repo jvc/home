@@ -30,10 +30,6 @@ if !has('nvim')
     set directory=$XDG_DATA_HOME/nvim/swap
     set viminfo+=n$XDG_DATA_HOME/nvim/shada/viminfo
 
-    " Wildmenu for command line completion
-    set wildmenu
-    set wildmode=longest,list,full
-
     " Copy/Paste
     nnoremap <F5> :set invpaste paste?<Enter>
     imap <F5> <C-O><F5>
@@ -65,6 +61,11 @@ set noexpandtab
 
 set colorcolumn=80
 set spell
+
+" Wildmenu for command line completion
+set wildmenu
+set wildmode=longest,list,full
+
 
 "set t_Co=256 set term to 256 colors (seems to be not necessary)
 
