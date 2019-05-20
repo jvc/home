@@ -44,6 +44,7 @@ endif
 
 set backspace=2		" allow backspacing over everything in insert mode
 set autoindent		" always set autoindenting on
+"set autoread
 set history=1000	" 1000 lines of command line history
 set textwidth=0
 set wrapmargin=0
@@ -62,10 +63,31 @@ set shiftwidth=8
 set noexpandtab
 
 set colorcolumn=80
+set spell
 
 "set t_Co=256 set term to 256 colors (seems to be not necessary)
 
 "set clipboard=unnamedplus
+"
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set wildignore+=*.so,*.o,*.a
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
+" Completion
+set complete=.,w,k
+" Enable omnicomplete
+" http://vim.wikia.com/wiki/Omni_completion
+set ofu=syntaxcomplete#Complete
+
+" Enable Syntax highlighting
+syntax on
+
+" TAGS
+set tags=./tags;
+set nocst
+
 
 nnoremap <F6> "=strftime("%c")<CR>P
 inoremap <F6> <C-R>=strftime("%c")<CR>
@@ -98,28 +120,6 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-" Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set wildignore+=*.so,*.o,*.a
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-
-" Completion
-set complete=.,w,k
-" Enable omnicomplete
-" http://vim.wikia.com/wiki/Omni_completion
-set ofu=syntaxcomplete#Complete
-
-" Enable Syntax highlighting
-syntax on
-
-" TAGS
-set tags=./tags;
-set nocst
-
-" Spell check
-set spell
-map <F7> :set spell!<Enter>
 
 "
 " Colors
@@ -144,11 +144,11 @@ autocmd BufWinEnter * highlight link ExtraWhitespace SpellBad
 " http://vim.wikia.com/wiki/Keep_your_vimrc_file_clean
 filetype plugin indent on
 
+
 "
 " Hooks based on file patterns
 "
 "
-
 " Auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
