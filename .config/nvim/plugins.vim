@@ -69,8 +69,8 @@ let g:syntastic_python_checkers = ['flake8']
 
 " Ctrl-P plugin config
 " https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
-" - This will use wildignore, so it's likely we don't want custom ignore stuff
-"   configured here
+"
+let g:ctrlp_wildignore = 1
 
 " Sort from Top to Bottom
 let g:ctrlp_match_window_reversed = 0
