@@ -50,10 +50,10 @@ let g:yankring_min_element_length = 3
 nnoremap <silent> <F11> :YRShow<CR>
 
 
-" Check Python files with flake8
-let b:ale_linters = ['flake8' ]
-" Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8']
+" Ale
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%(%severity%)] %s]'
 
 
 " Syntastic provides syntax checking for a variety of file types using
