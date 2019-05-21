@@ -41,6 +41,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_solarized'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
+let g:airline_section_z='%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
 
 
 " YankRing
