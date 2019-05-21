@@ -13,10 +13,14 @@ if !isdirectory($XDG_CONFIG_HOME)
     silent !mkdir -p "$XDG_CONFIG_HOME"
 endif
 
-if !isdirectory($XDG_CONFIG_HOME)
+if !isdirectory($XDG_DATA_HOME)
     silent !mkdir -p "$XDG_DATA_HOME"
 endif
 
+let $backup_dir=glob('$XDG_DATA_HOME').'/nvim/backup'
+if !isdirectory($backup_dir)
+    silent !mkdir -p "$backup_dir"
+endif
 
 if !has('nvim')
     set nocompatible
