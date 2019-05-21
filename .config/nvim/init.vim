@@ -21,7 +21,6 @@ endif
 if !has('nvim')
     set nocompatible
     set incsearch		" Incremental search
-    set hlsearch
 
     silent !mkdir -p "$XDG_DATA_HOME/nvim/swap"
     silent !mkdir -p "$XDG_DATA_HOME/nvim/backup"
@@ -45,6 +44,7 @@ set autoindent		" always set autoindenting on
 set history=1000	" 1000 lines of command line history
 set textwidth=0
 set wrapmargin=0
+set nohlsearch		" Disable highlighting search once searching is done
 set autowrite
 set splitbelow
 set showcmd		" Show (partial) command in status line.
