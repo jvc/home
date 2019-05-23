@@ -18,14 +18,15 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
     Plug 'ervandew/supertab'
     Plug 'davidhalter/jedi-vim'
 
-    " Linters
+    " Linters/Formatters
     " Plug 'neomake/neomake'
     Plug 'w0rp/ale'
+    Plug 'ambv/black'
+    Plug 'Vimjas/vim-python-pep8-indent'
 
     " File types
     Plug 'chrisbra/csv.vim'
     Plug 'mboughaba/i3config.vim'
-    Plug 'Vimjas/vim-python-pep8-indent'
 
     " Bars
     Plug 'majutsushi/tagbar'
@@ -42,6 +43,9 @@ let g:airline_theme='base16_solarized'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
 let g:airline_section_z='%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
+
+" Black
+let g:black_linelength = 80
 
 
 " YankRing
