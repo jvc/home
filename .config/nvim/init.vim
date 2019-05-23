@@ -155,7 +155,7 @@ filetype plugin indent on
 
 " Auto reload vimrc when editing it
 autocmd! BufWritePost init.vim source $XDG_CONFIG_HOME/nvim/init.vim
-autocmd! BufWritePost plugin.vim source $XDG_CONFIG_HOME/nvim/plugin.vim
+autocmd! BufWritePost plugins.vim source $XDG_CONFIG_HOME/nvim/plugins.vim
 
 " Set file types
 autocmd BufNewFile,BufRead *.zsh.d/* setlocal filetype=zsh
