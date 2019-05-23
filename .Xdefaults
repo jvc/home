@@ -34,10 +34,10 @@ xterm*cursorBlink:       false
 xterm*saveLines:         65535
 xterm*highlightSelection: true
 xterm*renderFont: default
-xterm*faceName:      xft:Droid Sans Mono for Powerline:pixelsize=18
+xterm*faceName:      xft:Droid Sans Mono for Powerline:pixelsize=19
 
-URxvt*font:            xft:Droid Sans Mono for Powerline:pixelsize=18
-URxvt*boldFont:        xft:Droid Sans Mono for Powerline:pixelsize=18
+URxvt*font:            xft:Droid Sans Mono for Powerline:pixelsize=19
+URxvt*boldFont:        xft:Droid Sans Mono for Powerline:pixelsize=19
 URxvt*borderless:      1
 URxvt*letterSpace:     -1
 URxvt*metaSendsEscape: True
