@@ -56,6 +56,9 @@ let g:black_skip_string_normalization = 1
 " Ctrl-P
 let g:ctrlp_wildignore = 1
 
+" Python PEP8 Indent
+let g:pymode_indent = 0
+
 " Sort from Top to Bottom
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:16,results:32'
