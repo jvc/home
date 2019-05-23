@@ -4,7 +4,7 @@
 #fi
 
 umask 022
-limit coredumpsize 800M
+#limit coredumpsize 800M
 
 export DOC=/usr/share/doc
 export USA_RESIDENT=YES
