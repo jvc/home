@@ -1,0 +1,35 @@
+[flake8]
+max-line-length = 80
+max-complexity = 12
+select = C,E,F,W,B,B901,B902,B903,B950
+ignore =
+	# C812: missing trailing comma
+	# because it is triggered after black formatting
+	C812,
+	# C813: missing trailing comma in Python 3
+	# because it is triggered after black formatting
+	C813,
+
+	# D101: Missing docstring in public class 
+	D101,
+
+	# D102: Missing docstring in public method
+	D102,
+
+	# D103: Missing docstring in public function
+	D103,
+
+	# FI14: __future__ import "unicode_literals" missing 
+	FI14,
+
+	# FI17: __future__ import "generators" missing
+	FI17
+
+	# I201: Missing newline between import groups seems broken sometimes
+	# I201,
+
+	# T005: module-level import found
+	T005,
+
+	# W503: line break before binary operator
+	W503,
