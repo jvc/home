@@ -37,44 +37,23 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
 endif
 
 
-" Display all buffers when online one tab opened
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_solarized'
 let g:airline_powerline_fonts = 1
 let g:airline_solarized_bg='dark'
 let g:airline_section_z='%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
 
-" Black
-let g:black_linelength = 80
-
-
-" YankRing
-let g:yankring_history_dir = $XDG_CACHE_HOME
-let g:yankring_replace_n_pkey="<C-;>"
-let g:yankring_min_element_length = 3
-nnoremap <silent> <F11> :YRShow<CR>
-
-
 " Ale
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%(%severity%)] %code%: %s'
 
+" Black
+let g:black_linelength = 80
+let g:black_skip_string_normalization = 1
 
-" Syntastic provides syntax checking for a variety of file types using
-" different backends for each. (ie: pylint for python)
-let g:syntastic_check_on_open = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = {
-    \ 'mode': 'active',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': ['c'] }
-let g:syntastic_python_checkers = ['flake8']
-
-
-" Ctrl-P plugin config
-" https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
-"
+" Ctrl-P
 let g:ctrlp_wildignore = 1
 
 " Sort from Top to Bottom
@@ -100,3 +79,9 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'find %s -type f',
     \ 'ignore': 0
     \ }
+
+" YankRing
+let g:yankring_history_dir = $XDG_CACHE_HOME
+let g:yankring_replace_n_pkey="<C-;>"
+let g:yankring_min_element_length = 3
+nnoremap <silent> <F11> :YRShow<CR>
