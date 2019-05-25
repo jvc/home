@@ -10,7 +10,9 @@ export PATH=$HOME/bin:$PATH
 #export GDK_SCALE=1.3
 xrandr --dpi 128 &
 
-xsetroot -solid "#001616" &
+#xsetroot -solid "#001616" &
+#xsetroot -solid "#483958" &
+xsetroot -solid "#1b1721" &
 xrdb -merge $HOME/.Xdefaults &
 xset b off &
 xset s off &
@@ -25,5 +27,6 @@ clipit &
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
 
 ssh-add &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 exec i3
