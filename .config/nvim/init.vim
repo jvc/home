@@ -82,7 +82,7 @@ set wildignore+=*.so,*.o,*.a
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 " Completion
-set complete=.,w,k
+set complete=.,w
 " Enable omnicomplete
 " http://vim.wikia.com/wiki/Omni_completion
 set ofu=syntaxcomplete#Complete
