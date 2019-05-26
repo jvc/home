@@ -82,6 +82,7 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'find %s -type f',
     \ 'ignore': 0
     \ }
+let g:ctrlp_mruf_exclude = '.*/.git/rebase-merge/git-rebase-todo\|.*/.git/COMMIT_EDITMSG'
 
 " YankRing
 let g:yankring_history_dir = $XDG_CACHE_HOME
