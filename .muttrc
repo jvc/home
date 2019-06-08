@@ -133,8 +133,7 @@ ignore *
 unignore	from: subject to cc mail-followup-to date x-mailer x-url
 
 source ~/.mutt/binds
-
-source ~/src/dracula-mutt/dracula.muttrc
+source ~/.mutt/colors
 
 # set query_command="goobook query '%s'"
 unset query_command
