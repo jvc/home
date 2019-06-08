@@ -22,6 +22,7 @@ xset m 4/1 4 &
 dunst &
 wicd-gtk --tray &
 udiskie -s &
+blueman-applet &
 
 clipit &
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
