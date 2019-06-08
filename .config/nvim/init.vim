@@ -73,7 +73,7 @@ set wildmode=longest,list,full
 
 "set t_Co=256 set term to 256 colors (seems to be not necessary)
 
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 "
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
