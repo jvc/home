@@ -72,5 +72,5 @@ URxvt.iso14755: False
 URxvt.iso14755_52: False
 
 ! Colors
-#include ".Xdefaults-dracula"
+#include ".Xdefaults-solarized"
 
