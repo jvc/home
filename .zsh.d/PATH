@@ -9,6 +9,7 @@ path=(
     $HOME/local/bin(/)
     $HOME/local/usr/sbin(/)
     $HOME/local/usr/bin(/)
+    /usr/local/go/bin(/)
     /usr/lib/perl5/core_perl/bin(/)
     /opt/*/sbin(/)
     /opt/*/bin(/)
