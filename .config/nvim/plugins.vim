@@ -48,6 +48,9 @@ let g:airline_section_z='%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__resto
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%(%severity%)] %code%: %s'
+let g:ale_pattern_options = {
+\   '.*\.c$': {'ale_enabled': 0},
+\}
 
 " Black
 let g:black_linelength = 80
