@@ -208,3 +208,5 @@ bar {
 }
 
 bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'Droid Sans Mono for Powerline 10' -p 'dmenu%'"
+
+bindsym $mod+Tab exec wmctrl -i -a $(wmctrl -l | dmenu -p "Choose window: " -l 10 | cut -d " " -f1)
