@@ -20,7 +20,8 @@ xset dpms 0 0 600 &
 xset m 4/1 4 &
 
 dunst &
-wicd-gtk --tray &
+#wicd-gtk --tray &
+nm-applet &
 udiskie -s &
 blueman-applet &
 
