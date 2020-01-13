@@ -2,6 +2,7 @@
 
 import sys
 
+
 def main():
     """Entry
     """
@@ -13,8 +14,8 @@ def main():
     aofb = (vala * 100) / valb
     bofa = (valb * 100) / vala
 
-    print "%d is %.2f%% of %d" % (vala, aofb, valb)
-    print "%d is %.2f%% of %d" % (valb, bofa, vala)
+    print("%d is %.2f%% of %d" % (vala, aofb, valb))
+    print("%d is %.2f%% of %d" % (valb, bofa, vala))
 
     if vala == valb:
         return
@@ -27,15 +28,15 @@ def main():
     incr = (diff * 100) / lo
     decr = (diff * 100) / hi
 
-    print "%d increased %.2f%% is %d" % (lo, incr, hi)
-    print "%d decreased %.2f%% is %d" % (hi, decr, lo)
+    print("%d increased %.2f%% is %d" % (lo, incr, hi))
+    print("%d decreased %.2f%% is %d" % (hi, decr, lo))
 
     valsum = vala + valb
     aofsum = (vala * 100) / valsum
     bofsum = (valb * 100) / valsum
 
-    print "%d is %.2f%% of the sum %d" % (vala, aofsum, valsum)
-    print "%d is %.2f%% of the sum %d" % (valb, bofsum, valsum)
+    print("%d is %.2f%% of the sum %d" % (vala, aofsum, valsum))
+    print("%d is %.2f%% of the sum %d" % (valb, bofsum, valsum))
 
 if __name__ == "__main__":
     sys.exit(main())
