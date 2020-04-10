@@ -1,23 +1,10 @@
 [[ -e /etc/debian_version ]] || return 0
 
-##
-# APT Package MGMT
-##
-if which aptitude >/dev/null 2>&1; then
-    APTBIN=aptitude
-    alias apt="sudo aptitude"
-    alias aptp="sudo aptitude purge"
-    alias aptsu="sudo aptitude safe-upgrade"
-    alias aptfu="sudo aptitude full-upgrade"
-else
-    APTBIN=apt-get
-    alias aptp="sudo $APTBIN purge"
-    alias aptsu="sudo apt-get dist-upgrade"
-    alias aptfu="sudo $APTBIN upgrade"
-    alias aptbd="sudo $APTBIN build-dep"
-fi
-
-alias aptu="sudo $APTBIN update"
+alias aptp="sudo apt-get purge"
+alias aptsu="sudo apt-get dist-upgrade"
+alias aptfu="sudo apt-get upgrade"
+alias aptbd="sudo apt-get build-dep"
+alias aptu="sudo apt-get update"
 
 
 # Common apt stuff
@@ -34,23 +21,12 @@ aptsb() {
 }
 
 apti() {
-    sudo $APTBIN install $*
+    sudo apt-get install $*
     hash -r
 }
-
-# # keys
-# alias aptkeys="grep \"# run: \" /etc/apt/sources.list | cut -c8- | sh"
-# # install favorites
-# alias aptifav='apti `grep -v "^#" share/favorite_debs_server`'
 
 aptk()
 {
     gpg --keyserver pgpkeys.mit.edu --recv-key $1 && {
         gpg -a --export $1 | sudo apt-key add - }
-}
-
-delusergroup()
-{
-    deluser $1
-    delgroup $1
 }
