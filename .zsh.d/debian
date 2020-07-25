@@ -11,10 +11,6 @@ alias aptu="sudo apt-get update"
 alias aptsh="apt-cache show"
 alias apts="apt-cache search"
 
-aptbd() {
-    sudo apt-get build-dep $*
-}
-
 aptsb() {
     aptbd $1
     apt-get source -b $1
