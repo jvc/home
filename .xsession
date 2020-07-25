@@ -8,7 +8,7 @@ export PATH=$HOME/bin:$PATH
 
 # HighRes stuff
 #export GDK_SCALE=1.3
-xrandr --dpi 128 &
+# xrandr --dpi 128 &
 
 #xsetroot -solid "#001616" &
 #xsetroot -solid "#483958" &
@@ -23,7 +23,7 @@ dunst &
 #wicd-gtk --tray &
 nm-applet &
 udiskie -s &
-blueman-applet &
+# blueman-applet &
 
 clipit &
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
