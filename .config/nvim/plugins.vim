@@ -3,7 +3,7 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
 
     " In buffer navigation
     Plug 'tpope/vim-unimpaired'
-    Plug 'easymotion/vim-easymotion'
+    "Plug 'easymotion/vim-easymotion'
 
     " File/buffer browsing and finding
     Plug 'ctrlpvim/ctrlp.vim'
@@ -29,7 +29,7 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
     Plug 'mboughaba/i3config.vim'
 
     " Bars
-    Plug 'majutsushi/tagbar'
+    "Plug 'majutsushi/tagbar'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
