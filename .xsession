@@ -1,34 +1,51 @@
 #!/bin/sh
 
+export PATH=$HOME/bin:$PATH
+
+# Set background
+xsetroot -solid "#1b1721" &
+
+# Restart ssh-agent and set up environment
 pkill ssh-agent 2>/dev/null
 pkill -9 ssh-agent 2>/dev/null
 eval $(ssh-agent)
 
-export PATH=$HOME/bin:$PATH
-
-# HighRes stuff
-#export GDK_SCALE=1.3
-# xrandr --dpi 128 &
-
-#xsetroot -solid "#001616" &
-#xsetroot -solid "#483958" &
-xsetroot -solid "#1b1721" &
+# Load defaults
 xrdb -merge $HOME/.Xdefaults &
+
+# Disable bell
 xset b off &
+
+# Disable screensaver
 xset s off &
+
+# Enable Energy Star to turn display off after 10 minutes
 xset dpms 0 0 600 &
-xset m 4/1 4 &
 
+# xset does not work with libinput
+# xset m 4/1 4 &
+
+# Set primary display to 50% brightness to start at
+xrandr --output eDP-1 --brightness 0.5 &
+
+# Notification daemon
 dunst &
-#wicd-gtk --tray &
-nm-applet &
-udiskie -s &
-# blueman-applet &
 
-clipit &
-xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
+# No polkit agent required anymore
+# /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+# Use $HOME/bin/startapplets so these can be restarted easily
+#redshift-gtk -m randr:crtc=0 &
+#nm-applet &
+#udiskie -s &
+#clipit &
+#blueman-applet &
+startapplets
+
+# Add identities to auth agent
 ssh-add &
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+# Key bindings
+xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
 
 exec i3
