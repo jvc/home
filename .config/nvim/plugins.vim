@@ -91,4 +91,5 @@ let g:ctrlp_mruf_exclude = '.*/.git/rebase-merge/git-rebase-todo\|.*/.git/COMMIT
 let g:yankring_history_dir = $XDG_CACHE_HOME
 let g:yankring_replace_n_pkey="<C-;>"
 let g:yankring_min_element_length = 3
+let g:yankring_clipboard_monitor = 0
 nnoremap <silent> <F11> :YRShow<CR>
