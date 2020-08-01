@@ -3,7 +3,7 @@
 #vf=screenshot
 #vo=gl
 ao=alsa
-threads=4
+threads=16
 # ao=pulse
 #vo=xv
 # vo=x11
