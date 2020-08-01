@@ -18,6 +18,7 @@ gaps outer 8
 
 for_window [class="^.*"] border pixel 1
 
+for_window [class="clipit"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [instance="Msgcompose"] floating enable
