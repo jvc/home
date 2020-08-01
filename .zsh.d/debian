@@ -1,15 +1,9 @@
 [[ -e /etc/debian_version ]] || return 0
 
-alias aptp="sudo apt-get purge"
-alias aptsu="sudo apt-get dist-upgrade"
-alias aptfu="sudo apt-get upgrade"
 alias aptbd="sudo apt-get build-dep"
-alias aptu="sudo apt-get update"
-
-
-# Common apt stuff
-alias aptsh="apt-cache show"
-alias apts="apt-cache search"
+alias apts="apt search"
+alias aptsh="apt show"
+alias aptu="sudo apt update"
 
 aptsb() {
     aptbd $1
@@ -17,7 +11,7 @@ aptsb() {
 }
 
 apti() {
-    sudo apt-get install $*
+    sudo apt install $*
     hash -r
 }
 
