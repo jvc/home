@@ -176,6 +176,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym Mod1+Control+h exec gpaste-client ui
+
 bindcode 232 exec xbacklight -dec 10
 bindcode 233 exec xbacklight -inc 10
 

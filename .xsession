@@ -48,4 +48,6 @@ ssh-add &
 # Key bindings
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
 
+gpaste-client start &
+
 exec i3
