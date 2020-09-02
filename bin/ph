@@ -10,8 +10,7 @@
 # ~/src/home - since it is essentially a collection of files that are
 # are in my home directory.
 #
-# jvc@jvic.net
-#
+
 export PH_REPO=${PH_REPO:-$HOME/src/home}
 
 [[ -d $PH_REPO ]] || {
@@ -56,18 +55,25 @@ ph_add()
 
     for file in $*; do
         repo_dir="$PH_REPO"
+
         # canonicalize then remove ^$HOME/ so we're left with the relative path
         # to the file from $HOME.
         cfile=$(readlink -e $file)
         file=${cfile#$HOME/}
         file_tail=${file:t}
+
+        # If the file is not in $HOME/ but instead a sub directory, identify
+        # the equivalent sub directory in the repository and create it
         if [[ ${file:h} != "." ]]; then
-            relative_dir="${file:h}"
+            relative_dir="${file:h}/"
             repo_dir="$PH_REPO/$relative_dir"
             mkdir -vp $repo_dir
+        else
+            relative_dir=""
         fi
+
         mv -v $cfile $repo_dir &&
-		( cd $PH_REPO ; git add $relative_dir/$file_tail ) &&
+		( cd $PH_REPO ; git add $relative_dir$file_tail ) &&
 		ln -vfs $repo_dir/$file_tail $cfile
     done
 }
