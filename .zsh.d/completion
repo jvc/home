@@ -11,7 +11,7 @@ zstyle ':completion:*:processes' command 'ps x'
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh.d/cache
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh
 
 # Completion debug
 # http://www.linux-mag.com/id/1106
