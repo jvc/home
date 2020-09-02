@@ -1,0 +1,10 @@
+mountgdrive() {
+    google-drive-ocamlfuse -label gdrive $HOME/gdrive
+}
+
+umountgdrive() {
+    fusermount -u $HOME/gdrive
+}
+
+alias mgdrive=mountgdrive
+alias umgdrive=umountgdrive
