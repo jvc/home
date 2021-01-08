@@ -195,3 +195,8 @@ cscopebuilddb() {
 cscopebrowse() {
         cscope -d
 }
+
+nohist() {
+    HISTFILE=/dev/null
+    unsetopt histappend
+}
