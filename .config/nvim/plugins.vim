@@ -27,6 +27,7 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
     " File types
     Plug 'chrisbra/csv.vim'
     Plug 'mboughaba/i3config.vim'
+    Plug 'zainin/vim-mikrotik'
 
     " Bars
     "Plug 'majutsushi/tagbar'
