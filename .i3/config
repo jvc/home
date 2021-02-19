@@ -20,6 +20,7 @@ for_window [class="^.*"] border pixel 1
 
 for_window [class="clipit"] floating enable
 for_window [class="zoom"] floating enable
+assign [class="zoom"] 1
 for_window [class="MPlayer"] floating enable
 for_window [instance="Msgcompose"] floating enable
 #for_window [class="rdesktop"] floating enable
