@@ -113,6 +113,8 @@ locate_pwd()
 {
     locate $* | grep "^$PWD/"
 }
+alias ar1="autorandr --load default && xrandr --output eDP-1 --brightness 0.4"
+alias ar2="autorandr --load home-dual && xrandr --output eDP-1 --brightness 0.4"
 alias lp=locate_pwd
 alias mkdir='nocorrect mkdir'
 alias mkiso="mkisofs -J -R -pad -o"
