@@ -52,11 +52,11 @@ URxvt*underLine:       False
 URxvt*visualBell:      False
 
 URxvt.matcher.button:  1
-URxvt.perl-ext-common: default,selection,selection-to-clipboard,searchable-scrollback<Control-Shift-R>
+URxvt.perl-ext-common: default,matcher,selection,selection-to-clipboard,searchable-scrollback<Control-Shift-R>
 URxvt.clipboard.autocopy: true
 URxvt*charClass:       0-32:1,33-126:2,127-160:3,161-255:2
 URxvt.urgentOnBell:    True
-URxvt.urlLauncher:     firefox
+URxvt.urlLauncher:     /usr/bin/xdg-open
 URxvt.keysym.F2: OQ
 URxvt.keysym.F3: OR
 URxvt.keysym.F4: OS
