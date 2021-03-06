@@ -21,7 +21,7 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
     " Linters/Formatters
     " Plug 'neomake/neomake'
     Plug 'w0rp/ale'
-    Plug 'python/black'
+    " Plug 'python/black'
     Plug 'Vimjas/vim-python-pep8-indent'
 
     " File types
