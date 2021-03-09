@@ -56,7 +56,7 @@ URxvt.perl-ext-common: default,matcher,selection,selection-to-clipboard,searchab
 URxvt.clipboard.autocopy: true
 URxvt*charClass:       0-32:1,33-126:2,127-160:3,161-255:2
 URxvt.urgentOnBell:    True
-URxvt.urlLauncher:     /usr/bin/xdg-open
+URxvt.urlLauncher:     /usr/bin/x-www-browser
 URxvt.keysym.F2: OQ
 URxvt.keysym.F3: OR
 URxvt.keysym.F4: OS
