@@ -13,6 +13,7 @@ path=(
     /usr/lib/perl5/core_perl/bin(/)
     /opt/*/sbin(/)
     /opt/*/bin(/)
+    /snap/bin(/)
     /usr/*/sbin(/)
     /usr/*/bin(/)
     /sbin
