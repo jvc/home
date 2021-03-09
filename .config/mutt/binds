@@ -41,6 +41,9 @@ macro index \Cr \
   "<tag-pattern>~N\n<tag-prefix><clear-flag>N<tag-pattern>~O\n<tag-prefix><clear-flag>O" \
   "Mark all new messages as read"
 
-#macro index,pager S "<tag-prefix><save-message>=archive<enter>:set delete=yes<enter><sync-mailbox>:set delete=no<enter>"
+# "Delete" to Trash
+macro index D ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=Trash\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+
+# Save to archive
 macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 
