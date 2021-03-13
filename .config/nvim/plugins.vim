@@ -12,7 +12,8 @@ if has('nvim') && !empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
     Plug 'tpope/vim-fugitive'
 
     " Clipboard
-    Plug 'vim-scripts/YankRing.vim'
+    "Plug 'vim-scripts/YankRing.vim'
+    Plug 'bfredl/nvim-miniyank'
 
     " Completion
     Plug 'ervandew/supertab'
@@ -89,8 +90,15 @@ let g:ctrlp_user_command = {
 let g:ctrlp_mruf_exclude = '.*/.git/rebase-merge/git-rebase-todo\|.*/.git/COMMIT_EDITMSG'
 
 " YankRing
-let g:yankring_history_dir = $XDG_CACHE_HOME
-let g:yankring_replace_n_pkey="<C-;>"
-let g:yankring_min_element_length = 3
-let g:yankring_clipboard_monitor = 0
-nnoremap <silent> <F11> :YRShow<CR>
+"let g:yankring_history_dir = $XDG_CACHE_HOME
+"let g:yankring_replace_n_pkey="<C-;>"
+"let g:yankring_min_element_length = 3
+"let g:yankring_clipboard_monitor = 0
+"nnoremap <silent> <F11> :YRShow<CR>
+
+
+"nvim-miniyank
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+map <leader>n <Plug>(miniyank-cycle)
+map <leader>N <Plug>(miniyank-cycleback)
