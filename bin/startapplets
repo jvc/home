@@ -4,9 +4,9 @@
 #killall redshift
 killall udiskie 2>/dev/null
 killall nm-applet 2>/dev/null
-#killall clipit
+killall blueman-applet 2>/dev/null
 
 #redshift-gtk -m randr:crtc=0 &
 udiskie -s &
 nm-applet &
-#clipit &
+blueman-applet &

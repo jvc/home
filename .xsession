@@ -36,10 +36,6 @@ dunst &
 
 # Use $HOME/bin/startapplets so these can be restarted easily
 #redshift-gtk -m randr:crtc=0 &
-#nm-applet &
-#udiskie -s &
-#clipit &
-#blueman-applet &
 startapplets
 
 # Add identities to auth agent
