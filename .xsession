@@ -25,8 +25,8 @@ xset dpms 0 0 600 &
 # xset does not work with libinput
 # xset m 4/1 4 &
 
-# Set primary display to 50% brightness to start at
-xrandr --output eDP-1 --brightness 0.5 &
+# Set primary display to 60% brightness to start at
+xrandr --output eDP-1 --brightness 0.6 &
 
 # Notification daemon
 dunst &
