@@ -34,9 +34,17 @@ dunst &
 # No polkit agent required anymore
 # /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
-# Use $HOME/bin/startapplets so these can be restarted easily
+# Screen dimmer based on time of day
 #redshift-gtk -m randr:crtc=0 &
-startapplets
+
+# Disk applet
+udiskie -s &
+
+# Network Manager applet
+nm-applet &
+
+# Bluetooth applet
+blueman-applet &
 
 # Key bindings
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
