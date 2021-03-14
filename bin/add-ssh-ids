@@ -1,0 +1,20 @@
+#!/bin/sh
+
+pname=$0
+true=/bin/true
+false=/bin/false
+err=$false
+
+ssh-add || err=$true
+if ! $err; then
+    files=~/.vault/*_ssh.gpg
+    if [ -n "$files" ]; then
+        gpg --quiet --for-your-eyes-only --no-tty --decrypt $files | ssh-add -
+        [ $? -eq 0 ] || err=$true
+    fi
+fi
+
+$err && {
+    echo "Error: failures for one reason or another. Run $pname"
+    $SHELL -l
+}

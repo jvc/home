@@ -38,9 +38,6 @@ dunst &
 #redshift-gtk -m randr:crtc=0 &
 startapplets
 
-# Add identities to auth agent
-ssh-add &
-
 # Key bindings
 xmodmap ~/.xmodmap/CapsLock_to_Escape.xmodmap
 
