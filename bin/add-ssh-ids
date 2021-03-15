@@ -16,5 +16,8 @@ fi
 
 $err && {
     echo "Error: failures for one reason or another. Run $pname"
-    $SHELL -l
+    exec $SHELL -l
+    exit 1
 }
+
+exit 0
