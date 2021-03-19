@@ -1,0 +1,41 @@
+#!/bin/sh
+
+if [ "$#" -eq 0 ]; then
+    echo "Usage: $0 <arg1> [argN...]"
+    echo "  Must provide arguments to pass to mbsync" >&2
+    exit 2
+fi
+
+spinnersrc=$HOME/src/spinner/spinner.sh
+[ -f "$spinnersrc" ] || {
+    echo "Error: $spinner_src not found" >&2
+    echo "  Try: cd ~/src && git clone git@github.com:swelljoe/spinner.git" >&2
+    exit 1
+}
+
+. "$spinnersrc"
+
+SPINNER_DONEFILE=.mbsyncmon-stopspin
+SPINNER_SYMBOLS="WIDE_ASCII_SNEK"
+valid=false
+while true; do
+    mbsync "$@"
+
+    # Use the first run as a way to validate command line args
+    if [ "$?" -ne 0 ]; then
+        $valid || {
+            echo "Error: Failed on first mbsync attempt so will not continue"
+            exit 1
+        }
+    else
+        valid=true
+    fi
+
+    spinner &
+    spinner_pid=$!
+    sleep 180
+    status=$?
+    touch $SPINNER_DONEFILE
+    wait $spinner_pid
+    [ "$?" -ne 0 -o "$status" -ne 0 ] && break
+done
