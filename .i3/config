@@ -216,6 +216,15 @@ bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F
 bindsym $mod+Tab exec wmctrl -i -a $(wmctrl -l | dmenu -p "Choose window: " -l 10 | cut -d " " -f1)
 
 
-exec --no-startup-id x-terminal-emulator
 exec --no-startup-id x-terminal-emulator -e zsh -c alsamixer
+exec --no-startup-id x-terminal-emulator
+#split h
+exec --no-startup-id x-terminal-emulator
+#focus left
+#split h
+#focus right
+#move left
+#focus right
+# continue with the existing split h
+exec --no-startup-id x-terminal-emulator -e zsh -c khal --interactive
 exec --no-startup-id x-terminal-emulator -e add-ssh-ids
