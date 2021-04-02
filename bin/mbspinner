@@ -1,11 +1,13 @@
 #!/bin/sh
 
-if [ "$#" -eq 0 ]; then
-    echo "Usage: $0 <arg1> [argN...]"
-    echo "  Must provide arguments to pass to mbsync" >&2
+if [ "$#" -le 1 ]; then
+    echo "Usage: $0 <prog> <arg1> [argN...]"
+    echo "  Must provide program with at least one argument" >&2
     exit 2
 fi
 
+prog=$1
+shift
 spinnersrc=$HOME/src/spinner/spinner.sh
 [ -f "$spinnersrc" ] || {
     echo "Error: $spinner_src not found" >&2
@@ -15,11 +17,11 @@ spinnersrc=$HOME/src/spinner/spinner.sh
 
 . "$spinnersrc"
 
-SPINNER_DONEFILE=.mbsyncmon-stopspin
+SPINNER_DONEFILE=".$prog-stopspin"
 SPINNER_SYMBOLS="WIDE_ASCII_SNEK"
 valid=false
 while true; do
-    mbsync "$@"
+    $prog "$@"
 
     # Use the first run as a way to validate command line args
     if [ "$?" -ne 0 ]; then
