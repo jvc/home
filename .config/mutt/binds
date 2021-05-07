@@ -41,6 +41,8 @@ macro index \Cr \
   "<tag-pattern>~N\n<tag-prefix><clear-flag>N<tag-pattern>~O\n<tag-prefix><clear-flag>O" \
   "Mark all new messages as read"
 
+#macro pager \cb "|urlscan\n" "open url with urlscan"
+
 # "Delete" to Trash
 macro index D ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=Trash\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 
