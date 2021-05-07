@@ -1,8 +1,0 @@
-restartxcompmgr() {
-    local pid=`pidof xcompmgr`
-    if [[ $? -eq 0 ]]; then
-        kill $pid
-        xcompmgr -ncf -D 1 &
-        disown
-    fi
-}

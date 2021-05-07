@@ -1,4 +1,0 @@
-prgitdiff()
-{
-    git diff-tree -p --full-index --no-commit-id $* | git2svn.py >! /tmp/prgc-scratch
-}
