@@ -202,3 +202,11 @@ nohist() {
     HISTFILE=/dev/null
     unsetopt histappend
 }
+
+umld() {
+    local lastdir
+
+    lastdir=$PWD
+    cd
+    umount $lastdir
+}
